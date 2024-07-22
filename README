@@ -1,0 +1,16 @@
+BlueSCSI Wi-Fi DA: a Wi-Fi status and control Desk Accessory for BlueSCSI
+(Atari ST version)
+Written by Thorsten Otto
+
+based on code by joshua stein <jcs@jcs.org> - http://jcs.org/bluescsi
+
+BlueSCSI Wi-Fi DA is free software; see the LICENSE file for copyright/licensing
+
+To install, just copy the accessory to the root of your boot partition.
+There should now be a Wi-Fi option in the AES menu.
+
+Alternatively, it can also be started from the desktop (but that makes
+only sense on multitasking systems like MiNT or MagiC).
+
+1.1 - 2024-07-22
+	- First Atari version

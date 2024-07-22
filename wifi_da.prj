@@ -1,0 +1,24 @@
+wifi_da.acc
+.C[-A-]
+.C[-P-]
+.C[-M-]
+.C[-K-]
+.C[-G-]
+.C[-2-]
+.C[-8-]
+.C[-C-]		; no nested comments please
+.C[-L64]
+
+.L[-S=16384]
+=
+cstart0.o
+about.c
+main.c
+scsi.c
+util.c
+window.c
+dd.c
+
+pcgemlib.lib
+pcstdlib.lib
+pctoslib.lib

@@ -1,0 +1,541 @@
+data 'ALRT' (-16000) {
+	$"0046 0092 00AB 0175 C180 5555"                      /* .F.....u..UU */
+};
+
+data 'DITL' (-16000) {
+	$"0001 0000 0000 0046 0050 005A 008C 0402"            /* .......F.P.Z.... */
+	$"4F4B 0000 0000 0009 000C 003F 00D8 8808"            /* OK.........?.... */
+	$"5E30 5E31 5E32 5E33"                                /* ^0^1^2^3 */
+};
+
+data 'DITL' (-15999, "CONNECT") {
+	$"0005 0000 0000 0050 0136 0064 017F 0407"            /* .......P.6.d.... */
+	$"436F 6E6E 6563 745B 0000 0000 0050 00E6"            /* Connect[.....P.. */
+	$"0064 012F 0406 4361 6E63 656C 0000 0000"            /* .d./..Cancel.... */
+	$"0032 005A 0042 017D 1000 0000 0000 0078"            /* .2.Z.B.}.......x */
+	$"005A 008E 0180 8803 2E2E 2E73 0000 0000"            /* .Z.........s.... */
+	$"0032 000A 0042 0055 8809 5061 7373 776F"            /* .2...B.U..Passwo */
+	$"7264 3A20 0000 0000 000A 000A 0029 0182"            /* rd: .........).. */
+	$"882B 5468 6520 5769 2D46 6920 6E65 7477"            /* .+The Wi-Fi netw */
+	$"6F72 6B20 225E 3022 2072 6571 7569 7265"            /* ork "^0" require */
+	$"7320 6120 7061 7373 776F 7264 2E00"                 /* s a password.. */
+};
+
+data 'DITL' (-15998, "ABOUT", purgeable, preload) {
+	$"0002 0000 0000 00B4 0140 00C8 017C 0402"            /* .........@...|.. */
+	$"4F4B 0000 0000 000A 00DC 0090 01A2 880B"            /* OK.............. */
+	$"5E30 205E 310D 5E32 0D5E 3300 0000 0000"            /* ^0 ^1.^2.^3..... */
+	$"0000 FFD8 0106 011E C002 C180"                      /* ............ */
+};
+
+data 'MENU' (-15999) {
+	$"C181 0000 0000 0000 0000 FFFF FFFF 0557"            /* ...............W */
+	$"692D 4669 0E41 626F 7574 2057 692D 4669"            /* i-Fi.About Wi-Fi */
+	$"2E2E 2E00 0000 0000"                                /* ........ */
+};
+
+data 'DLOG' (-15999) {
+	$"0066 0036 00D6 01C3 0010 0000 0100 0000"            /* .f.6............ */
+	$"0000 C181 0E57 692D 4669 2050 6173 7377"            /* .....Wi-Fi Passw */
+	$"6F72 641C 680A"                                     /* ord.h. */
+};
+
+data 'DLOG' (-16000) {
+	$"002A 00A8 0064 0162 0001 0100 0000 0000"            /* .*...d.b........ */
+	$"0000 C182 0000 280A"                                /* ......(. */
+};
+
+data 'DLOG' (-15998) {
+	$"0032 0024 0120 01CB 0001 0000 0000 0000"            /* .2.$. .......... */
+	$"0000 C182 0000 280A"                                /* ......(. */
+};
+
+data 'SICN' (-16000) {
+	$"0000 6006 700E 3FFC 1FF8 3E7C 67E6 4FF2"            /* ..`.p.?...>|g.O. */
+	$"1BD8 17E8 0FF0 1C38 399C 718E 6006 0000"            /* .......89.q.`... */
+	$"0000 0FC0 1860 3010 67C8 482C 438C 444C"            /* .....`0.g.H,C.DL */
+	$"410C 2018 1878 0FFC 07FE 001F 000F 0006"            /* A. ..x.......... */
+	$"0000 0000 0000 0550 0AA8 1004 22A2 4550"            /* .......P....".EP */
+	$"0808 1140 02A0 0400 0080 0100 0000 0000"            /* ...@. .......... */
+	$"0000 0000 0000 0550 0AA8 1004 22A2 4550"            /* .......P....".EP */
+	$"0808 1140 02A0 0400 0180 0180 0000 0000"            /* ...@. .......... */
+	$"0000 0000 0000 0550 0AA8 1004 22A2 4550"            /* .......P....".EP */
+	$"0808 13C0 07E0 0420 0180 0180 0000 0000"            /* ....... ...-.... */
+	$"0000 0000 0000 0550 0AA8 1004 27E2 4FF0"            /* .......P....'.O. */
+	$"1818 13C8 07E0 0420 0180 0180 0000 0000"            /* ....... ........ */
+	$"0000 0000 0000 0FF0 1FF8 300C 67E6 4FF2"            /* ..........0.g.O. */
+	$"1818 13C8 07E0 0420 0180 0180 0000 0000"            /* ....... ........ */
+};
+
+data 'ICN#' (-16000) {
+	$"0000 0000 0000 0000 0000 0000 0000 0000"            /* ................ */
+	$"0000 0000 0000 0000 0000 0000 0000 0000"            /* ................ */
+	$"0000 0000 003F F800 007F FC00 01E0 0F00"            /* .....?.......... */
+	$"0380 0380 070F E1C0 063F F8C0 0078 3C00"            /* .........?...x<. */
+	$"00E0 0E00 00C7 C600 000F E000 001C 7000"            /* ..............p. */
+	$"0018 3000 0001 0000 0003 8000 0001 0000"            /* ..0............. */
+	$"0000 0000 0000 0000 0000 0000 0000 0000"            /* ................ */
+	$"0000 0000 0000 0000 0000 0000 0000 0000"            /* ................ */
+	$"0000 0000 0000 0000 0000 0000 0000 0000"            /* ................ */
+	$"0000 0000 0000 0000 0000 0000 007F FC00"            /* ................ */
+	$"00FF FE00 03FF FF80 07FF FFC0 0FFF FFE0"            /* ................ */
+	$"1FFF FFF0 3FFF FFF8 1FFF FFF0 0FFF FFE0"            /* ....?........... */
+	$"07FF FFC0 03FF FF80 01FF FF00 00FF FE00"            /* ................ */
+	$"007F FC00 003F F800 001F F000 000F E000"            /* .....?.......... */
+	$"0007 C000 0003 8000 0001 0000 0000 0000"            /* ................ */
+	$"0000 0000 0000 0000 0000 0000 0000 0000"            /* ................ */
+};
+
+data 'BNDL' (-16000) {
+	$"7769 6669 0000 0001 4652 4546 0000 0000"            /* wifi....FREF.... */
+	$"0080 4943 4E23 0000 0000 C180"                      /* ..ICN#...... */
+};
+
+data 'vers' (1) {
+	$"0110 8000 0000 0331 2E31 2B31 2E31 20A9"            /* .......1.1+1.1 . */
+	$"2032 3032 332D 3230 3234 2C20 6A6F 7368"            /*  2023-2024, josh */
+	$"7561 2073 7465 696E 203C 6A63 7340 6A63"            /* ua stein <jcs@jc */
+	$"732E 6F72 673E"                                     /* s.org> */
+};
+
+data 'ics#' (-16000) {
+	$"0000 0000 0000 0FF0 1FF8 300C 67E6 4FF2"            /* ..........0.g.O. */
+	$"1818 13C8 07E0 0420 0180 0180 0000 0000"            /* ....... ........ */
+	$"FFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFF"            /* ................ */
+	$"FFFF FFFF FFFF FFFF FFFF FFFF FFFF FFFF"            /* ................ */
+};
+
+data 'wifi' (0, "Owner resource") {
+	$"00"                                                 /* . */
+};
+
+data 'FREF' (-16000) {
+	$"6466 696C 0000 00"                                  /* dfil... */
+};
+
+data 'FREF' (128) {
+	$"6466 696C 0000 00"                                  /* dfil... */
+};
+
+data 'PICT' (-16000) {
+	$"1994 0007 0007 010D 014D 1101 A000 8201"            /* .........M...... */
+	$"000A 0007 0007 010D 014D 9800 2800 0000"            /* .........M..(... */
+	$"0001 0001 4000 0000 0001 0001 4000 0A00"            /* ....@.......@... */
+	$"0A01 0A01 4A00 0102 D900 02D9 0002 D900"            /* ....J........... */
+	$"02D9 0002 D900 02D9 0002 D900 02D9 0002"            /* ................ */
+	$"D900 02D9 0002 D900 02D9 0002 D900 02D9"            /* ................ */
+	$"0002 D900 02D9 0002 D900 06EC 0000 28EF"            /* ..............(. */
+	$"0006 EC00 0086 EF00 07EC 0001 52C0 F000"            /* ............R... */
+	$"08ED 0002 0495 50F0 000B F000 050A AA00"            /* ......P......... */
+	$"0449 5CF0 000D F200 0715 6AF5 5542 8924"            /* .I\.......j.UB.$ */
+	$"B6F0 000B F200 FD55 037A A092 ABF0 000E"            /* .......U.z...... */
+	$"F300 0805 2AAA ADAA 954A 2957 F000 0FF3"            /* ....*....J)W.... */
+	$"0000 02FE AA05 DDEB 5124 A9C0 F100 0FF3"            /* ........Q$...... */
+	$"0009 152A AAAD AB5B 585B 5780 F100 0FF3"            /* ...*...[X[W..... */
+	$"0009 55AA AAB6 BFAB AF55 D5E0 F100 0FF3"            /* ..U............. */
+	$"0009 9555 6EDD DFDD 75BD 57A0 F100 10F4"            /* ...Un...u.W..... */
+	$"000A 0254 5B7B 6FFF F5BE BFAB 40F1 0011"            /* ...T[{o.....@... */
+	$"F400 0B15 A556 EDBF FFEE FBFB BEAC 18F2"            /* .....V.......... */
+	$"0011 F400 0B12 B54A BFD5 EFFE DADF FF85"            /* ................ */
+	$"60F2 0011 F400 0B4D 88BB ECAF FFFF AFFA"            /* `......M........ */
+	$"BD57 40F2 0011 F400 0B4A A54A BFFA BFFF"            /* ..@......J.J.... */
+	$"F55F DEB7 E0F2 0013 F600 0601 0A3A 4AD5"            /* ._...........:J. */
+	$"7DD7 FEFF 03FA F55F A0F2 0013 F600 0D03"            /* }......_........ */
+	$"215B 5A95 AEDD DFFF FEAF 5A6B F0F2 0013"            /* ![Z......-Zk.... */
+	$"F600 0D08 49EA F6B2 EDB7 7FFF FDFB F5BF"            /* ....I........... */
+	$"DEF2 0013 F600 0D25 05BD DA8A AFD5 DFFF"            /* .......%...-.... */
+	$"FF5C FA57 FDF2 0014 F700 0E01 140A FF6E"            /* .\.W...........n */
+	$"AD7A FF7F FFFE F7F5 BFFB F200 14F6 000E"            /* .z.............. */
+	$"150B 5F76 D4AF 6AAF FFFF D6FD AFFF A0F3"            /* .._v..j....... . */
+	$"0014 F700 0604 482E FFDB 6ADB FDFF 04B5"            /* ......H...j..... */
+	$"FD7F FFC0 F300 14F6 000E 282A FEFD BA5D"            /* ..........(*...] */
+	$"AADF FFFF EDFF AFFE F4F3 0015 F700 0F52"            /* ...............R */
+	$"D0B6 FDBE C5B7 7FEF FFFF BAFE FFEF DBF3"            /* .-.............. */
+	$"0015 F700 0F4B 40AB FFFF FABB AABF FFFF"            /* .....K@......... */
+	$"EBFF AFDF FDF3 0015 F700 0F05 21AF F7F5"            /* ..-.........!-.. */
+	$"65DA FBEF FFFF F6FF FFBF FAF3 0015 F700"            /* e............... */
+	$"0F29 93FF FDFF 7AF7 5D5F 5FFF D57F F7BF"            /* .)....z.]__..... */
+	$"FFF3 0015 F700 0F2A 27FF FFEB 5BAD EAFF"            /* .......*'...[... */
+	$"EFFF EDDF FC7F ACF3 0016 F700 012B 2FFE"            /* .............+/. */
+	$"FF0B FEDF 6EFF EAFF F6FF F73F FFC0 F400"            /* ....n......?.... */
+	$"16F8 0001 014A FDFF 0BFB EBD3 FD55 7FEA"            /* .....J.......U.. */
+	$"FFFA 7F5F 80F4 0014 F700 011A 3FFC FF09"            /* ..._........?... */
+	$"7DFF FB5F FEBF FF7F D6F0 F400 14F7 0000"            /* }.._............ */
+	$"52FC FF0A DACF FF55 7FEB 5FFD 7FBB E0F4"            /* R......U.._..... */
+	$"0012 F700 0028 FBFF 0853 FFD4 AFEB AFD7"            /* .....(...S...... */
+	$"7FBA F300 13F7 0000 45FC FF09 FB2F FF72"            /* ........E..../.r */
+	$"BFED 5FFD FFD7 F300 15F8 0001 0123 FCFF"            /* -._..........#.. */
+	$"0AFC AFFF DD2F F5E7 F77F DB40 F400 14F7"            /* ...../.....@.... */
+	$"0000 4FFC FF0A EA7F FFEA BFFA BBFF FFBE"            /* ..O............. */
+	$"C0F4 0016 F800 0202 06BF FDFF 0AF1 2FFF"            /* .........-..../. */
+	$"FAAF EEEB FDBD 57F0 F400 14F7 0000 97FC"            /* .-....W......... */
+	$"FF0A B0DF BFFA DFF7 6DFE F6BD E0F4 0016"            /* ........m....... */
+	$"F700 100E FFF7 FFFF F5EA 5D8F FF77 F9DA"            /* ..........]..w.. */
+	$"7FBE B6F0 F400 16F7 0001 3AB7 FEFF 0BEF"            /* ..........:..... */
+	$"A155 FF7A FFF7 EFBF D5EF E0F4 0016 F700"            /* .U.z............ */
+	$"101B 7DF7 FFFF FBE8 57FF BFBF FF72 FFFD"            /* ..}.....W....r.. */
+	$"F6F8 F400 16F7 0010 5AEB F7FF FFDE 92AF"            /* ........Z.....-. */
+	$"FFFE EFFB DEAF FFBB E8F4 0017 F800 1102"            /* ................ */
+	$"55EB F7FF FFFB D45F BFDE F7FB 7DAF FFBB"            /* U......_....}-.. */
+	$"F8F4 0015 F700 00A5 FDFF 0BD5 52BE 7F2D"            /* ...............- */
+	$"AFFF 7AFB FDEE D8F4 0015 F700 00B3 FDFF"            /* ..z............. */
+	$"0BFB 59BE 2F87 F5FB BF5F FFEF FCF4 0016"            /* ..../...._...... */
+	$"F800 0102 4FFD FF0B F6EA 7E3E 8B5F FFF5"            /* ....O.....~>._.. */
+	$"6FFF FDEC F400 16F8 0001 114F FDFF 0BF5"            /* o..........O.... */
+	$"777E 2FC3 F5FF FFAB FF7E FCF4 0016 F800"            /* w~/......~...... */
+	$"0124 9FFD FF0B FAF7 7E3E C7FF FDFE DFFF"            /* .$.......>...... */
+	$"EFFC F400 16F8 0001 029F FDFF 0BFE F77F"            /* ................ */
+	$"5F43 7EFF FF6B FF7E FEF4 0015 F800 0181"            /* _C~..k.~........ */
+	$"5FFC FF0A FEBF FEC6 8FFF FEB6 FFDF FCF4"            /* _......-........ */
+	$"0014 F800 0184 5FFB FF09 37FF 47EB FFFF"            /* .....-_...7.G... */
+	$"6D7F FFFF F400 15F8 0001 092F FCFF 0AFE"            /* m.........-/.... */
+	$"BDF5 CD57 FFFF ADFF DFFE F400 17F8 0002"            /* -.-W............ */
+	$"012F F7FD FF0B FB4F 5ECE 57FF FFD6 FFEB"            /* ./.....O^.W..... */
+	$"FF80 F500 16F8 0001 445F FCFF 0BFD 57EB"            /* ........D_....W. */
+	$"8D2F FFFF BD5F FFF9 80F5 0017 F800 0204"            /* ./..._.......... */
+	$"9FDF FDFF 0BFE A1BA 995F FFFF EF5F FFFC"            /* ........._..._.. */
+	$"C0F5 0018 F900 0201 027F FEFF 0C7F FFFA"            /* ................ */
+	$"B5DF 656F FFFF D2FF D7FC F400 16F9 0002"            /* ..eo............ */
+	$"0122 7FFC FF0A FEB4 ACB5 7FFF FFFE BFFF"            /* .".............. */
+	$"FEF4 0016 F800 0040 FDFF 05BF FFFE 9553"            /* .......@.......S */
+	$"5FFE FF03 FBEF F7EC F400 14F9 0001 0200"            /* _............... */
+	$"FAFF 0256 DAAB FEFF 03EA AFFF FEF4 0017"            /* ...V............ */
+	$"F800 0001 FEFF 0DFE FFFF FEAA ADFE F7FF"            /* ................ */
+	$"FFEE EFFF ECF4 0012 F800 0001 FAFF 01AB"            /* ................ */
+	$"7DFD FF03 F5B3 FFFE F400 14F8 0000 13FB"            /* }............... */
+	$"FF0A F575 F7FE DFFF FFED BFFE F4F4 0014"            /* ...u............ */
+	$"F900 0102 50FA FF09 9AB6 EFEF FFEB F755"            /* ....P..........U */
+	$"FFFE F400 17F8 0000 2DFE FF05 FEFF FFFA"            /* ........-....... */
+	$"EEF7 FEFF 04B5 FADB FF72 F400 17F8 0000"            /* .........r...... */
+	$"8DFE FF00 FEFE FF09 53F7 FD6F FFFD FADD"            /* ........S..o.... */
+	$"FFB8 F400 18F9 0001 0137 FEFF 0D7F FFFF"            /* .........7...... */
+	$"FADF BFFF FFBF F7BF 7B7F F0F4 0016 F800"            /* ........{....... */
+	$"003A FDFF 0C7F FFFE A8FF FF6D BBFE CFFA"            /* .:.........m.... */
+	$"FFBC F400 17F8 0000 D5FE FF00 BFFE FF09"            /* ................ */
+	$"6F97 FBDF F6FF FFEB 7FE8 F400 18F9 0001"            /* o............... */
+	$"044B FEFF 00DF FEFF 096A BDFF DD7E FDFF"            /* .K...........~.. */
+	$"FEBF F8F4 0017 F800 0097 FEFF 0DDF BFFF"            /* ................ */
+	$"FFAB 6FDD B7F5 7FFF FEFF F8F4 0017 F800"            /* ..o............. */
+	$"004D FEFF 0DDF BFFF FFF5 A96D D57D BBFF"            /* .M.........m.}.. */
+	$"FF5F FCF4 0017 F800 0475 7FFF FFEF FEFF"            /* ._.......u...... */
+	$"09F5 6F77 7FBB DAFF FFBF FCF4 0018 F900"            /* ..ow............ */
+	$"0201 3D3F FEFF 00DF FEFF 0855 AFA5 EB5B"            /* ..=?...........[ */
+	$"FFFF AFFF F400 13F8 0000 ACF9 FF04 75BA"            /* ..............u. */
+	$"DD5E F7FE FF01 FE80 F500 18F9 0002 0176"            /* .^.............v */
+	$"3FFD FF0C FBFF FFBE BF76 F775 FFFF EFFF"            /* ?........v.u.... */
+	$"C0F5 0018 F900 0201 50BF FDFF 00F7 FEFF"            /* ........P....... */
+	$"08FD F6AD DEEF FFEF FF80 F500 16F8 0001"            /* ................ */
+	$"E49F FDFF 00FB FDFF 07FB EDFB 6BFF F7FF"            /* ............k... */
+	$"E0F5 0019 F900 0203 407F FEFF 01DF EFFE"            /* ........@....... */
+	$"FF04 FDFF FBEB 57FE FF00 C0F5 0017 F900"            /* ......W......... */
+	$"0201 E51F FDFF 00F5 FDFF 07CF DD7B DFFF"            /* ...........-.{.. */
+	$"FDFF F0F5 0018 F900 0201 80BF FDFF 00FB"            /* ................ */
+	$"FEFF 08FE 7F56 DF7F FFFF 7FD8 F500 17F8"            /* .....V.......... */
+	$"0001 C03F FDFF 00ED FEFF 04FE DFF6 F3B7"            /* ...?............ */
+	$"FEFF 00F8 F500 19F9 0002 0185 7FFE FF01"            /* ................ */
+	$"DFBB FEFF 04FD FFDE AEF5 FEFF 00F8 F500"            /* ................ */
+	$"15F8 0001 403F FDFF 00FA FCFF 06BF B57D"            /* ....@?.........} */
+	$"7FFF FFFE F500 16F9 0002 0205 7BFE FF00"            /* ............{... */
+	$"DFFB FF06 FAAF 7FF7 FFF7 FBF5 0018 F900"            /* ................ */
+	$"0201 053F FEFF 0ADF FEFF FEBF FFDB F76B"            /* ...?...........k */
+	$"757D FEFF F500 17F8 0003 28B7 F77F FDFF"            /* u}........(..... */
+	$"0AFD EBDF EFFF B57F D76F FF7F F500 1AF9"            /* .........o...... */
+	$"0002 0305 77FE FF00 DFFE FF0A 6D6B F7DF"            /* ....w.......mk.. */
+	$"557F FB77 FFFF 80F6 001A F900 0204 09CB"            /* U..w............ */
+	$"FEFF 0EBF AFFF FEB6 92AF F95A ADBE AFFF"            /* ...........Z.... */
+	$"FF40 F600 1AF9 0014 0324 17DF FFFF DEAB"            /* .@.......$...... */
+	$"FFFF AACA B3FD CAAA EBDB FFFF E0F6 001A"            /* ................ */
+	$"F900 0204 0A5F FEFF 0EDF F7FF FF77 24AD"            /* ....._.......w$. */
+	$"AA35 57DE D7FF FFE0 F600 1AF9 0014 0222"            /* .5W............" */
+	$"4DBF FFFF BF9D FFFF D2B2 46D5 AA5A F7BB"            /* M.........F..Z.. */
+	$"FFFF F0F6 001A F900 020A 84EA FEFF 0EBE"            /* ................ */
+	$"F7BF FD6A 8AAA 7429 552D F7FF FFF0 F600"            /* ...j..t)U-...... */
+	$"1AF9 0014 0485 FA7F FFFF BE8D 702B AEA8"            /* ............p+.. */
+	$"055B 4D0A B5BD FFFF FCF6 001A F900 020A"            /* .[M............. */
+	$"09C1 FEFF 0EBF 6BA5 5D6B 4A92 2952 A557"            /* ......k.]kJ.)R.W */
+	$"57FF F5F4 F600 1AF9 0002 0205 D0FE FF0E"            /* W............... */
+	$"BFE9 7803 0AA2 494C 492A B5BA FFFD FEF6"            /* ......ILI*...... */
+	$"0019 F800 1323 D1BF FFFF BF9F A014 8555"            /* .....#...... ..U */
+	$"2493 A485 AFED 7FF5 3EF6 001A F800 142B"            /* $.......>......+ */
+	$"C4DF FFFF 7FC5 7504 8124 925A 1654 B6AB"            /* ......u..$.Z.T.. */
+	$"BFFF BF80 F700 1AF8 0014 0303 7FFF FF7A"            /* ...............z */
+	$"57AC 1254 D249 22A1 22FB 7ADF FDBE 80F7"            /* W..T.I".".z..... */
+	$"001A F800 1445 A17F FFFF 5FFB FB01 1209"            /* .....E...._..... */
+	$"2495 54AA 3BDB 6FFF E7C0 F700 1AF8 0007"            /* $.T.;.o......... */
+	$"4A26 DFFF FEFF FFAC FEA4 0991 4955 117A"            /* J&..........IU.z */
+	$"AD6B 7FDB C0F7 001A F800 140A 82EF FEFD"            /* .k.............. */
+	$"FFFF F712 5292 452A A955 1BEB AA95 7760"            /* ....R.E*.U....w` */
+	$"F700 1BF9 0004 1085 5BDF FEFE FF0D ADC9"            /* ........[....... */
+	$"28A9 128A A488 D57D 6AAB A9D0 F700 18F8"            /* (......}j....... */
+	$"0001 1749 FCFF 0DF5 7AAA 8948 A4B2 4A55"            /* ...I....z..H..JU */
+	$"55AA 5ABF F8F7 001A F900 0302 0ED3 BFFD"            /* U.Z............. */
+	$"FF0D DEAD 2AA4 A255 4922 977A A497 B5D0"            /* ....*..UI".z.... */
+	$"F700 19F9 0002 401F 17FC FF0D F76B A492"            /* ......@......k.. */
+	$"1213 6528 49FF 54A9 57FC F700 1BF9 0004"            /* ..e(I.T.W....... */
+	$"08BF 7FFF FEFE FF02 AEB5 52FE 4907 5292"            /* ..........R.I.R. */
+	$"B756 A117 BFDA F700 1BF9 0015 047F FA7D"            /* .V.............} */
+	$"FF7F FFFF F5DD A925 2A45 5892 02BF 5555"            /* .......%*EX...UU */
+	$"AFFC F700 1BF9 0015 11FF FDFB FF7F FFFF"            /* ................ */
+	$"DF6A A412 892A A425 557D 68B5 7F58 F700"            /* .j...*.%U}h..X.. */
+	$"1CFA 0016 0213 FFFC 9DFF BFFF FFDF 5B55"            /* ..............[U */
+	$"4A65 4955 1249 3D75 2ABF F8F7 001A F900"            /* JeIU.I=u*....... */
+	$"0325 FDF3 7BFD FF0D AAEC 8811 B882 5209"            /* .%..{.........R. */
+	$"254E EA95 7AB0 F700 1BFA 0004 050B FEF3"            /* %N..z........... */
+	$"7BFD FF0D FBB6 A404 AD51 5940 94AF FAA5"            /* {........QY@.... */
+	$"FFF0 F700 19F9 0002 53D7 8CFC FF0D D559"            /* ........S......Y */
+	$"0002 7B4A 244A 425B F557 FD50 F700 1BFA"            /* ..{J$JB[.W.P.... */
+	$"0004 0257 FFA1 F7FD FF0D FDD6 A001 5BD2"            /* ...W........ .[. */
+	$"9502 294A FAAF EFE0 F700 1AFA 0003 052F"            /* ..)J.........../ */
+	$"7F97 FCFF 0DFE A100 022E A948 014A 257E"            /* ...........H.J%~ */
+	$"FFFD 60F7 001A F900 029F FFDF FDFF 0EBE"            /* ..`............. */
+	$"AF7D 4002 AAED 254A 2295 BFFF FF60 F700"            /* .}@...%J"....`.. */
+	$"1BFA 0002 027F BFFD FF0B FDFF FBA0 8000"            /* ............. .. */
+	$"1554 9200 4849 FEFF 00C0 F700 16F9 0000"            /* .T..HI.......... */
+	$"3FF9 FF0C FA50 000A EE49 0009 257F FFFD"            /* ?....P...I..%... */
+	$"E0F7 001A FA00 0102 5FFC FF0F EFFF FFDC"            /* ........_....... */
+	$"8800 515B A080 2491 7FFF FF80 F700 1CFA"            /* ..Q[ .$......... */
+	$"0016 115E FFFF EFFF FFEF FFFD FEA0 0013"            /* ...^......... .. */
+	$"6DAA 0000 4A5F F8FF C0F7 0019 FA00 0105"            /* m....J_.......... */
+	$"3FFC FF0E DFFF F6AA 9481 49B7 6400 0281"            /* ?.........I.d... */
+	$"6FF5 FFF6 0017 FA00 0101 C3FA FF0C FBB7"            /* o............... */
+	$"5088 4ADB F540 0025 157B FFF6 0018 F900"            /* P.J..@.%.{...... */
+	$"001F FCFF 0E7F FFAE FA00 0127 7FDA 1000"            /* ...........'.... */
+	$"00AF FFF4 F600 1AFA 0004 041C FFFF BFFD"            /* ................ */
+	$"FF0C EF5B 5001 1BBF FB50 0002 44FF B0F6"            /* ...[P....P..D... */
+	$"0017 FA00 0101 73FA FF0C 7EE8 9128 ADFF"            /* ......s...~..(.. */
+	$"FE88 0001 137B 60F6 001A FA00 1411 29FF"            /* .....{`.......). */
+	$"FF7F FFFD FFFF 5FB6 C904 EFFF FFE5 0000"            /* ......_......... */
+	$"095F F500 1BFA 0004 05A7 FFFF 7FFE FF0D"            /* ._.............. */
+	$"FDFA D910 133D FFFF B900 0852 6880 F600"            /* .....=.....Rh... */
+	$"18F9 0002 90FF FEFD FF0C FEFB 55C9 12AF"            /* ............U... */
+	$"FFFF FE80 0009 0AF5 001D FA00 0301 0FFB"            /* ................ */
+	$"FEFD FF0D F5DA DE52 A97F FFFF D554 0044"            /* .......R.....T.D */
+	$"A880 F800 012A A921 0054 FA00 02A2 FB5E"            /* .....*.!.T.....^ */
+	$"FCFF 04EF 7514 D5AF FEFF 0452 8812 B480"            /* ....u......R.... */
+	$"FC00 0015 FE55 0122 2425 024A 9244 FC00"            /* .....U."$%.J.D.. */
+	$"021F 76BD FDFF 05F7 55AE EF09 7FFE FF03"            /* ..v.....U....... */
+	$"ECA2 AB58 FE00 022A AAAA FD88 0195 5227"            /* ...X...*......R' */
+	$"0A22 4952 AA40 0000 1082 EDBD FDFF 05FB"            /* ."IR.@.......... */
+	$"7EE8 B5AA 2FFE FF09 EF5A 8DED 2480 AAA2"            /* ~.../....Z..$... */
+	$"0888 FDAA 0152 4A28 0A95 2494 9112 A200"            /* .....RJ(..$..... */
+	$"002F D37B FDFF 05EE F75F AE12 BFFE FF0F"            /* ./.{....._...... */
+	$"F5A5 6AB2 4955 5515 5555 2444 4445 1555"            /* ..j.IUU.UU$DDE.U */
+	$"280A A4AA 5254 8812 0100 1FB7 7BFD FF05"            /* (...RT......{... */
+	$"FB7D 6AEA 928F FEFF 0FF6 ACAD AD25 554A"            /* .}j..........%UJ */
+	$"A944 4495 5555 3552 AA28 0A52 47B9 2525"            /* .DD.UU5R.(.RG.%% */
+	$"40A8 005E 5DF7 FDFF 05D7 F7DB 5D29 7FFE"            /* @..^].......]).. */
+	$"FF0F EAA2 6AA2 5D5A B555 52AA 4A6A 55AA"            /* ....j.]Z.UR.JjU. */
+	$"D555 2709 BF71 5490 A914 2290 255D FCFF"            /* .U'..qT...".%].. */
+	$"05B5 F7EE D504 07FE FF0F FDAB 12A9 D24B"            /* ...............K */
+	$"5555 56AA B55A 955A AB5A 2709 52AF 9549"            /* UUV..Z.Z.Z'.R..I */
+	$"14A2 944A 313B FCFF 059F DDBB 6C51 5FFE"            /* ...J1;......lQ_. */
+	$"FF0F EA35 54AD 57AA DAAD A955 AAA5 5549"            /* ...5T.W....U..UI */
+	$"5945 2709 BADA D454 A228 A528 54B7 FCFF"            /* YE'....T.(.(T... */
+	$"0555 FFDD AA14 8BFE FF0F EDD5 52A2 A89B"            /* .U..........R... */
+	$"AEB6 EDAA ADBA DF6E D4BB 2809 CAB6 2B25"            /* .......n..(...+% */
+	$"294A 4944 40AF FDFF 19FE DFFD B6F4 A555"            /* )JID@..........U */
+	$"7FFF FFB6 B548 5AA5 44F6 D2AA AAEA D56A"            /* .....HZ.D......j */
+	$"B2AA B527 09FD EBA5 A955 2925 2882 BFFC"            /* ...'.....U)%(... */
+	$"FF05 EDFD BB54 104F FEFF 0FB5 AD65 4A90"            /* .....T.O.....eJ. */
+	$"4215 5B6A F757 57AB 5EBB AD26 09A6 B4B5"            /* B.[j.WW.^..&.... */
+	$"556A 8ADD 4821 7FFB FF17 FEED B249 2AFF"            /* Uj..H!.......I*. */
+	$"FFFE DD56 B229 5525 7DAD B529 6DB4 DBE5"            /* ...V.)U%}..)m... */
+	$"D4AA 2508 FAB5 AB55 BB52 5524 05FA FF17"            /* ..%....U.RU$.... */
+	$"BFBA DA04 8B7F FFFF 55D5 5AA6 A491 BF76"            /* ........U.Z....v */
+	$"AFBF 2ADE ED7F 7FDF 2508 AFAA BAAD 5495"            /* ..*.....%.....T. */
+	$"BA94 1BFA FF04 F975 3422 23FE FF0F FAB6"            /* .......u4"#..... */
+	$"A55A DB6E DFDD FAE5 DF77 BBAA D575 2508"            /* .Z.n.....w...u%. */
+	$"DAFB DAB7 D6D5 6CD1 4FFA FF17 FEDF 5A11"            /* ......l.O.....Z. */
+	$"117F FFFE B6AA B5A5 6C92 4FFE AEAE EBBA"            /* ........l.O..... */
+	$"DD7E FF5F 2508 A75D 6BAD 7D37 D260 BFFA"            /* .~._%..]k.}7.`.. */
+	$"FF17 F99C B90A 00AB FFFD 6B56 DADD B649"            /* ..........kV...I */
+	$"FFFB B7F5 BFFF B7AB B7D5 2508 F557 7EEA"            /* ..........%..W~. */
+	$"AD95 6ABA 50FA FF17 FECF 5D01 A80F FFFD"            /* ..j.P........... */
+	$"B96A AB7F EB25 2FFF FABF FD75 FB7B BDFF"            /* .j...%/....u.{.. */
+	$"260A BFEA D5BF 74AB 95D5 D57A 27FB FF16"            /* &.....t....z'... */
+	$"DF2E 82B5 7FFF F5EA 155A DD54 A97F FFFF"            /* .........Z.T.... */
+	$"EBBF BF6E DEEB 5A27 0AFA BEFD EBB7 55D7"            /* ...n..Z'......U. */
+	$"7EF4 7FB9 FCFF 17FE C7D7 A057 FFFF FDDA"            /* ~......... W.... */
+	$"ADAA AFF6 A53F FFFF FDFA EFF6 F77B DF26"            /* .............{.& */
+	$"0ABF F7AE 36ED FE5A D74A 7B4B FBFF 16EB"            /* ....6..Z.J{K.... */
+	$"CB70 A7FF FFEB A495 5B55 6D10 A7FF FFF7"            /* .p......[Um..... */
+	$"AFFF DFFF EFBB 260A D5BF FFB6 6D5F DFBA"            /* ......&.....m_.. */
+	$"FD3F E8FB FF03 F1F5 FC1F FEFF 0FF6 96D5"            /* .?.............. */
+	$"B5B7 D517 FFFE FFFF AAFA BF77 FD27 0BFF"            /* ...........w.'.. */
+	$"FFFB EDB4 AFFD EFAD 7FAB BFFC FF03 FCFB"            /* ................ */
+	$"FE2B FEFF 0FF0 255A AD4A 92DF EFFF BF7B"            /* .+....%Z.J.....{ */
+	$"FFAF F7FF DB27 0BDA BFFE BFDF 757E F5EA"            /* .....'......u~.. */
+	$"DFF8 8FFC FF03 DE3D 7F80 FEFF 0FFA 95AA"            /* .......=........ */
+	$"D564 EA4F E3FF FFBF F5FF 7AD7 FF26 0BB7"            /* .d.O......z..&.. */
+	$"FFFB FFF5 DDD7 FF75 7FFB 7FFB FF02 DEBF"            /* .......u........ */
+	$"F7FE FF0F ECA2 B6AD A915 7537 FFFF F7FF"            /* ..........u7.... */
+	$"BDFF BFFD 240B FDFF FFDF FEEF FD5F EF7C"            /* ....$........_.| */
+	$"7FCF FAFF 00D7 FDFF 07F5 28AA D554 5509"            /* ..........(..TU. */
+	$"57FE FF04 F5EF EBFF EF1F 0BF7 7FF5 77F7"            /* W.............w. */
+	$"FFF5 B7FB B0FA 7FF5 FF07 FC85 555A D289"            /* ............UZ.. */
+	$"A5D7 FDFF 037F BFAF FD1C FDFF 06FA FFFE"            /* ................ */
+	$"B57D 5C7A F4FF 07D5 602B 56AA 2494 97FD"            /* .}\z....`+V.$... */
+	$"FF03 DFDD F7DF 200B FDBF DDFF DFFF EBDF"            /* ...... ......... */
+	$"DFF2 FFDF F6FF 08FE AA92 5555 A952 415F"            /* ..........UU.RA_ */
+	$"FDFF 037F FFFE FB25 0CFF FFFD FFEA FFFA"            /* .......%........ */
+	$"EAD5 7E9F DC77 FAFF 00BF FEFF 07E5 5215"            /* ..~..w........R. */
+	$"68AC 8924 5FFE FF00 F7FE FF00 7F20 0CFF"            /* h.._........ .. */
+	$"DFF7 FFBF F7ED 7FBF 7FFF A5BF F6FF 079A"            /* ................ */
+	$"84AD AA42 5489 3FFD FF03 7FFF FBED 200B"            /* ...BT.?....... . */
+	$"FFFF BFFF DAFF FEB7 EBAF FFF4 F5FF 07FD"            /* ................ */
+	$"A456 ED01 4AA9 5FFE FF04 FBFF FFFE FF1C"            /* .V..J._......... */
+	$"0BFF 7F6B FFF7 FFEB DFFE DFFF FBF5 FF07"            /* ...k............ */
+	$"FE48 ABF6 8010 002F FAFF 00EB 19FD FF08"            /* .H...../........ */
+	$"FBFF FD77 BF6F FFFF EFF6 FF07 FE64 BD7E"            /* ...w.o.......d.~ */
+	$"8005 2523 F9FF 1A09 FFFF B7FF AFFF EBBF"            /* ..%#............ */
+	$"EADF F3FF 07F9 4157 FD40 0290 08FA FF00"            /* ......AW.@...... */
+	$"D722 FDFF 08F7 FFFD 6FFE 6BFF FD5F FEFF"            /* ."......o.k.._.. */
+	$"00EF FAFF 08F9 285A FF40 0055 425F FDFF"            /* ......(Z.@.UB_.. */
+	$"027F FFFB 2310 FFFF DFFF 5FFF AFBF 57BE"            /* ....#....._...W. */
+	$"FFFB FFFF DFFF 5FFA FF08 F4E2 AFFD A000"            /* ......_....... . */
+	$"A485 AFFC FF01 FBBF 1EFD FF0C EFFF EADB"            /* ................ */
+	$"F556 FFEF FDFF ED6F EBFA FF08 D268 75EE"            /* .V.....o.....hu. */
+	$"A802 9A50 EBFA FF21 FDFF 0DBF FEFF BF5E"            /* ...P...!.......^ */
+	$"BFFF EEFF FFBE D6BF 7FFB FF07 E8F1 5AB5"            /* ..............Z. */
+	$"1400 A297 FBFF 01F5 BF23 11FD FAFF FFDF"            /* .........#...... */
+	$"FFB5 D7EB AAFF FFEF FF97 5B57 7FFB FF07"            /* ..........[W.... */
+	$"E2BC 6EDD 4682 2A93 FBFF 01FD FF21 11FF"            /* ..n.F.*......!.. */
+	$"DFFF FEFF FB6E FEBA 7FBF FF55 FF54 AAAA"            /* .....n.....U.T.. */
+	$"DFFC FF08 F5D1 D6B5 AFD3 5549 6DF9 FF24"            /* ..........UIm..$ */
+	$"11FD F6FF FEFF FFFB AFEF DFFF FFEF 7FA6"            /* ................ */
+	$"6DBB 6BFC FF08 FED5 752C A7E8 512D 35FB"            /* m.k.....u,..Q-5. */
+	$"FF01 BFDF 2611 FF7F FFFB FFFA AEFE BABF"            /* ....&........... */
+	$"7FFF FBD4 5115 56BD FCFF 08DB C9BB C217"            /* ....Q.V......... */
+	$"F494 A85F FDFF 03FB FFFE FF24 12D7 FFFF"            /* ..._.......$.... */
+	$"FEFF FFF6 D7DF EBDF FFF4 57A9 555A D55F"            /* ..........W.UZ._ */
+	$"FDFF 08FB EDBD 5A4B 3250 1605 FAFF 00D7"            /* ......ZK2P...... */
+	$"2612 FEBF FFFB FFDB DFFD B5BF 7FFF FEBA"            /* &............... */
+	$"144B 6B5B 6FFD FF08 BFD5 FFF1 7B68 8021"            /* .Kk[o.......{h.! */
+	$"5BFC FF02 DFFF 7D26 00F7 FDFF 1AFD EEAF"            /* [.....}&........ */
+	$"FFEF FFFF FD0B C524 AAAD 27FF FFFD FFEF"            /* .......$..'..... */
+	$"ED5F DD19 3408 2EAB FCFF 02EB FFEF 2412"            /* ._..4.........$. */
+	$"BEBF FFFB FFDF BBF7 6F7B BFFF FAD6 A212"            /* ........o{...... */
+	$"B5AA 97FD FF08 5AFF DFBF 6D20 0405 47FA"            /* ......Z...m ..G. */
+	$"FF00 DF26 00BF FDFF 1AF5 DD77 FBDD FBFF"            /* ...&.......w.... */
+	$"FC93 6956 966A D1FF FFFB FFFE ABEB D7A4"            /* ..iV.j.......... */
+	$"B805 15F7 FCFF 00EF FFFF 21FB FF0C 7FDE"            /* ..........!..... */
+	$"FFB7 FFFF FA4D 9209 69AA 0AFE FF09 FEAB"            /* .....M..i....... */
+	$"FFFB EE6A 6552 42AF FAFF 00DF 2601 FFBF"            /* ...jeRB.....&... */
+	$"FEFF 1AFB FAFF ADFE FFFF FD22 D2A5 2EAD"            /* ...........".... */
+	$"AAFF FFF7 FFFE AB5D F7B2 7101 14AF FBFF"            /* .......]..q..... */
+	$"01F7 F723 1FFF EFFF FFF7 AEBF ABFF 6BFF"            /* ...#..........k. */
+	$"FFFA 95A8 95B3 6A45 7FFF FFFD 57FF F7FE"            /* ......jE....W... */
+	$"C914 D4A3 37F9 FF24 007F FCFF 03FD FDDB"            /* ....7..$........ */
+	$"FEFE FF12 4964 88DD A922 BFF7 EFFF F55E"            /* ....Id...".....^ */
+	$"BFDF 694B E4B1 9FFB FF01 FAFF 271F F77F"            /* ..iK........'... */
+	$"FFFF FAFE BFFF FEAB FFFF FEA4 9256 EB6A"            /* .............V.j */
+	$"897F FBDF FABF EBEB FE94 B4DA CA6F FCFF"            /* .............o.. */
+	$"00DF FFFF 20FC FF1A EFBD 6AFF FEBF FFFE"            /* .... .....j..... */
+	$"AA5A 02BB B4A1 1FFB FFFD D57D 7DFF D617"            /* .Z.........}}... */
+	$"6D61 7FF9 FF21 FDFF 1BDE FEEF FFF6 ABFF"            /* ma...!.......... */
+	$"FFEA AAD5 55FD 5524 BFF7 BFF6 AFD7 D7FE"            /* ....U.U$........ */
+	$"A95F 5540 7FF9 FF20 FDFF 1AEF FF7A ABFF"            /* ._U@... .....z.. */
+	$"FEDF FFFF AA54 057F D4A4 0FFB FFFB F57E"            /* .....T.........~ */
+	$"FD5F 6D55 F6A2 F8FF 2209 FFFE FFFF 7EFF"            /* ._mU....".....~. */
+	$"DFFF F6DF FEFF 11D5 552B F56A 295F FF7F"            /* ........U+.j)_.. */
+	$"F6AF EBAF F5A9 96AB 6FF8 FF23 00FD FEFF"            /* ........o..#.... */
+	$"05EF D5DE B7BF EFFE FF12 FA55 4ABF A944"            /* ...........UJ..D */
+	$"4BFB FFFB F57D FABE ACD5 BBAF DFF9 FF24"            /* K....}.........$ */
+	$"09FF FAFF FDFE FFFB FFFD 7FFE FF11 FAAA"            /* ................ */
+	$"27EA B4A9 2DFF FFEE BFEF AFF7 6AE3 5AEF"            /* '...........j.Z. */
+	$"F9FF 00EF 2209 FFFF DFFF FFEF FD5F EFDF"            /* ...."........_.. */
+	$"FEFF 11F2 AB91 7EAA 24A7 FFFF EBAA FBF5"            /* ......~.$....... */
+	$"7BB6 F96E B7F8 FF21 FEFF 06FD FFFB B7FF"            /* {..n...!........ */
+	$"FF76 FEFF 11E9 2C26 EB52 D295 FFFF FAFF"            /* .v....,&.R...... */
+	$"DEBF DF59 FDB5 AFF8 FF22 01FF AFFE FF19"            /* ...Y....."...... */
+	$"7FFB AFDF BEBF FFFF FAA7 957D AA55 D6FF"            /* ...........}.... */
+	$"FFDB 55EF EAEB FFFE CDEF F8FF 211D EFFF"            /* ..U.........!... */
+	$"FEFF FFED 5EFB FBFF FFBF FFE1 1823 AAA5"            /* ....^........#.. */
+	$"56B5 FFFF F6FF FB7F FF7F FE56 F7FF 221E"            /* V..........V..". */
+	$"F5FF FFFE B7FF EF5F 5FF6 FFDF FFD5 4F1A"            /* .......__.....O. */
+	$"EAB5 55AD 7FFF B76A FB55 57BF FFD5 5FF8"            /* ..U....j.UW..._. */
+	$"FF21 1DFF F7FF FFEE EDFB FFFA BFFE FFFF"            /* .!.............. */
+	$"A629 455A AA57 76FF FFED DFDF FFFD EFFF"            /* .)EZ.Wv......... */
+	$"EFF7 FF1D FDFF 1777 FF5D 6D7F D77F BBFF"            /* .......w.]m..... */
+	$"D30D 134A AB5D FEBF FFB6 FBFE D55F 77F5"            /* ...J.]......._w. */
+	$"FF1B FCFF 15B7 F7FF DBFF FEFE FFDC B588"            /* ................ */
+	$"2524 57F5 BFFF 6DBF F7BF FBF4 FF1F 1BFF"            /* %$W...m......... */
+	$"DFFF F7AD FFBB F5FD 577F BFFF AB24 A554"            /* ........W....$.T */
+	$"B55B 7EFF FF75 D7FD D55E B7F5 FF1E FEFF"            /* .[~..u...^...... */
+	$"18FE FFAF EF6F AFFF DF7F FF56 AA88 4A89"            /* .....o.....V..J. */
+	$"2BD5 7FFF DF7E BF7F FBEF F5FF 1E01 FEBF"            /* +....~.......... */
+	$"FDFF 15F7 FDF6 BAF7 D7FF 57B2 C924 A4AD"            /* ..........W..... */
+	$"7BBF FFEB BFEB DADF 7BF5 FF1E FEFF 18F7"            /* {.......{....... */
+	$"FFBF FDD7 7FF7 FFFF 7DAF 4922 52AA 55DD"            /* ........}.I"R.U. */
+	$"FFFE 9FFF BEF7 F5EF F5FF 1BFB FF15 FEFF"            /* ................ */
+	$"EABD EAB7 FF5F 54A9 0921 16ED 7FFF F5FF"            /* ....._T..!...... */
+	$"D7BE BEFB F5FF 1E02 FFFF F7FE FF14 D7BA"            /* ................ */
+	$"FFF7 7FFD 5AFF 4948 94D4 AABB FFFE AFFF"            /* ....Z.IH........ */
+	$"FDDB F7F4 FF1B FBFF 15FD FFAD 7BD5 5FFF"            /* ............{._. */
+	$"FFA9 2442 0121 AF5D FFFB FFEF 7EBB 6FF5"            /* ..$B.!.]....~.o. */
+	$"FF1E FEFF 18DF FFFF F7AF FFDF FFFF BDFF"            /* ................ */
+	$"4692 9544 92D7 4BFE AFFF 7AD7 EFDF F5FF"            /* F..D..K...z..... */
+	$"1AFB FF0E FDFF BFF5 55F7 DFFF FB48 1244"            /* ........U....H.D */
+	$"A85B E2FE FF02 DEF5 7DF4 FF19 FAFF 13DD"            /* .[......}....... */
+	$"F7FF FF5F F57F FEA2 A511 115F 93FF BFFF"            /* ..._......._.... */
+	$"F75F EFF4 FF1B FBFF 15FE FF7F FBEB EDBF"            /* ._.............. */
+	$"FFCF 8811 0448 4BD1 7FFF FEAF F6F5 7FF5"            /* .....HK......... */
+	$"FF17 FAFF 01DB DEFC FF06 FE80 2A22 50AD"            /* ............*"P. */
+	$"B8FE FF02 F55F BFF4 FF1A FAFF 14FE FF5E"            /* ....._.........^ */
+	$"F76D 75FB DF44 0901 184D EC7F FFF6 BFF5"            /* .mu..D...M...... */
+	$"EF7F F5FF 19FA FF02 EFF7 F7FE FF07 BFFF"            /* ................ */
+	$"A044 8051 56D4 FEFF 02D5 BFBB F4FF 19FA"            /*  D.QV........... */
+	$"FF13 FEF7 7F6F F75D EFFF A822 A858 955A"            /* .....o.]...".X.Z */
+	$"7FFF FEFE F5FB F4FF 19FA FF02 EFDD FBFE"            /* ................ */
+	$"FF0D 7DDF 8809 40B0 4AD4 FFFF F7DB DFBF"            /* ..}...@.J....... */
+	$"F4FF 19FA FF13 FDFE FFAF FEF7 AFEF E005"            /* ................ */
+	$"11AC A576 FFFF FADE F5ED F4FF 17FA FF11"            /* ...v............ */
+	$"B7BF EFFF 7FDD FABF E809 4952 2ED9 FFFF"            /* ..........IR.... */
+	$"EFF7 F2FF 19FA FF13 FDF5 FDBF EBEF DFF7"            /* ................ */
+	$"F805 25AA 0B5F FFFF FDBA BBEF F4FF 18FB"            /* ..%.._.......... */
+	$"FF0D DAAF BFEF FDFE BFBA BFF0 0852 64AD"            /* .............Rd. */
+	$"FEFF 01D7 EFF2 FF18 FAFF 12F5 EB6D FFFF"            /* .............m.. */
+	$"F5FF ABF8 0519 362E BFFF FFFD 7B6D F3FF"            /* ......6.....{m.. */
+	$"18FB FF12 FEFF 7FFF BAF5 7FDB FFF0 0242"            /* ...............B */
+	$"6495 BFFF FFD7 DFF2 FF1A FDFF 04BF FFFF"            /* d............... */
+	$"B7AF FEFF 0CBD FEAB F811 2234 B6BF FFFF"            /* .........."4... */
+	$"FDF5 F2FF 1CFE FF16 7FFF FFDD FFFD FFBB"            /* ................ */
+	$"77F7 FBFF E004 8145 2BFF FFFB 577F BFF3"            /* w......E+...W... */
+	$"FF1A FDFF 105F FFED DFDF 7EFF FFBF 5EDB"            /* ....._....~...^. */
+	$"F000 8024 ACBF FEFF 00AF F2FF 18FB FF12"            /* ...$............ */
+	$"BF7F FEFF F55D FFF7 BFD0 0128 2A73 7FFF"            /* .....].....(*s.. */
+	$"FB5B FBF2 FF1A FDFF 04BF EFF7 7FBF FEFF"            /* .[.............. */
+	$"07FD 7BF6 F400 0407 3DFE FF01 DD7F F2FF"            /* ..{.....=....... */
+	$"19FD FF13 EBFF 5DEF FFD5 FF5A ABEE DFE8"            /* ......]....Z.... */
+	$"00A8 0AD6 FFFF FB7F F1FF 17FB FF00 EEFE"            /* ................ */
+	$"FF0D 6BDF FDFE FB7A 8005 1775 7FFF FFD6"            /* ..k....z...u.... */
+	$"F1FF 19FE FF13 7FF7 FFFF EFB5 B5FE FBF7"            /* ................ */
+	$"6BAF D445 28AA ADFF EFFE F0FF 14F8 FF0E"            /* k..E(........... */
+	$"FEEF FFBB FDFD FF71 26AF 6EFF FFEF EFF1"            /* .......q&.n..... */
+	$"FF17 FBFF 11FB FFFE AFBF B5EE F757 FD64"            /* .............W.d */
+	$"9ABA B7FF FFFD 7FF1 FF19 FDFF 01FA FBFE"            /* ................ */
+	$"FF0E F7FF FFF7 5FFA AFF7 55AC FBFF FFBF"            /* ......_...U..... */
+	$"7FF1 FF14 F9FF 0AD5 BEBF F56D FADF FDE7"            /* ...........m.... */
+	$"4A9B FEFF 00FB F0FF 13F8 FF00 DFFE FF05"            /* J............... */
+	$"BEF7 BFF7 EAEB FEFF 00FD F0FF 18FD FF0E"            /* ................ */
+	$"DFFF EFFE FAFF FF77 D77B BFFB DFEB 6FFE"            /* .......w.{....o. */
+	$"FF00 B7F0 FF0F FBFF 09FD FFFF 5EFF FFF7"            /* ............^... */
+	$"FFBD 7BE9 FF14 FCFF 0BFE FFFB FFFB FF7F"            /* ..{............. */
+	$"FD5B EFDF EFEC FF01 FBFF 0EF9 FF08 F7FF"            /* .[.............. */
+	$"DBB7 5FFE FDFB F7EA FF0D F8FF 0757 FFED"            /* .._..........W.. */
+	$"FBDB AFDE BFEA FF0E F9FF 08BF F7F6 FFFE"            /* ................ */
+	$"FFF6 DFF7 EAFF 0FF9 FF09 EFDF DFEA EFAD"            /* ................ */
+	$"7FF7 FFF7 EBFF 0FFA FF09 BFFE EFFF FFED"            /* ................ */
+	$"FFDD FFDF EAFF 3400 FD01 3C01 0701 4638"            /* ......4...<...F8 */
+	$"A000 83FF"                                          /*  ... */
+};
+
+data 'dast' (-16000) {
+	$"5D76 312E 310D 4465 736B 2041 6363 6573"            /* ]v1.1.Desk Acces */
+	$"736F 7279 2066 6F72 2042 6C75 6553 4353"            /* sory for BlueSCS */
+	$"490D A920 3230 3234 2C20 6A6F 7368 7561"            /* I.. 2024, joshua */
+	$"2073 7465 696E 0D0D 5765 623A 2068 7474"            /*  stein..Web: htt */
+	$"703A 2F2F 6A63 732E 6F72 672F 0D0D 4920"            /* p://jcs.org/..I  */
+	$"6D69 7373 2079 6F75 2C20 4361 726C"                 /* miss you, Carl */
+};
+
