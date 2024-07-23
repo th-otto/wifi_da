@@ -234,7 +234,7 @@ __extension__	\
 #endif
 
 
-static bool getCookie(long cookie, unsigned long *p_value)
+bool getCookie(long cookie, unsigned long *p_value)
 {
 	long *cookiejar = (long *) Setexc(0x5a0 / 4, (void (*)(void))-1);
 

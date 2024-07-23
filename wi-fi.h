@@ -80,6 +80,7 @@ struct wifi_join_request
 
 extern short _app;
 extern _WORD main_win;
+extern _WORD aes_handle;
 extern _WORD gl_wchar, gl_hchar;
 
 extern int wifi_scsi_id;
@@ -107,6 +108,7 @@ void update_wifi_ssid_list(bool update_networks);
 void destroy_window(void);
 void window_mousedown(_WORD mox, _WORD moy);
 
+bool getCookie(long cookie, unsigned long *p_value);
 bool scsidrv_init(bool reinit);
 void scsidrv_exit(void);
 unsigned short scsidrv_get_version(void);

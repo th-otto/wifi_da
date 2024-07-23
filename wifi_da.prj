@@ -18,6 +18,8 @@ scsi.c
 util.c
 window.c
 dd.c
+adaptrsc.c
+popup.c
 
 pcgemlib.lib
 pcstdlib.lib

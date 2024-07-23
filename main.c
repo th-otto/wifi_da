@@ -31,6 +31,7 @@ struct wifi_network_entry wifi_scan_networks[10];
 
 _WORD main_win;
 _WORD password_win;
+_WORD aes_handle;
 _WORD gl_wchar, gl_hchar;
 
 /*
@@ -225,7 +226,7 @@ int main(void)
 
 	if (appl_init() < 0)
 		return 1;
-	graf_handle(&gl_wchar, &gl_hchar, &dummy, &dummy);
+	aes_handle = graf_handle(&gl_wchar, &gl_hchar, &dummy, &dummy);
 	for (i = 0; i < NUM_OBS; i++)
 		rsrc_obfix(rs_object, i);
 

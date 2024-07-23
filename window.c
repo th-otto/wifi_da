@@ -19,16 +19,14 @@
 #include <stdio.h>
 #include <string.h>
 #include "wi-fi.h"
+#include "popup.h"
 
-static int nwifi_scan_networks = 0;
+static int nwifi_scan_networks;
 static struct wifi_network_entry wifi_menu_networks[nitems(wifi_scan_networks)] = { 0 };
 
-static OBJECT ssid_menu[nitems(wifi_scan_networks) + 1];
+static char *ssid_menu[nitems(wifi_scan_networks) + 1];
 
-static int nwifi_menu_networks = 0;
-
-#define hiword(x) (((short *)&(x))[0])
-#define loword(x) (((short *)&(x))[1])
+static int nwifi_menu_networks;
 
 
 void create_window(void)
@@ -219,40 +217,11 @@ void update_wifi_ssid_list(bool update_networks)
 	if (wifi_menu_networks[0].ssid[0] == '\0')
 		strlcpy(wifi_menu_networks[0].ssid, rs_str(NO_NETWORK_TEXT), sizeof(wifi_menu_networks[0].ssid));
 
-	ssid_menu[ROOT].ob_next = NIL;
-	ssid_menu[ROOT].ob_head = 1;
-	ssid_menu[ROOT].ob_tail = m + 1;
-	ssid_menu[ROOT].ob_type = G_BOX;
-	ssid_menu[ROOT].ob_flags = OF_NONE;
-	ssid_menu[ROOT].ob_state = OS_NORMAL;
-	ssid_menu[ROOT].ob_spec.index = 0xFF1100L;
-	ssid_menu[ROOT].ob_x = 0;
-	ssid_menu[ROOT].ob_y = 0;
-	ssid_menu[ROOT].ob_width = tree[WIN_SCSI_ID].ob_width;
-	ssid_menu[ROOT].ob_height = gl_hchar * m;
-
-	for (n = 0, mitem = 1; n < nwifi_menu_networks; n++)
+	for (n = 0, mitem = 0; n < nwifi_menu_networks; n++)
 	{
-		obj_set_ptext(ssid_menu, mitem, wifi_menu_networks[n].ssid);
-		ssid_menu[mitem].ob_next = mitem + 1;
-		ssid_menu[mitem].ob_head = NIL;
-		ssid_menu[mitem].ob_tail = NIL;
-		ssid_menu[mitem].ob_type = G_STRING;
-		ssid_menu[mitem].ob_flags = OF_NONE;
-		if ((wifi_cur_info.ssid[0] == '\0' && n == 0) || strcmp(wifi_menu_networks[n].ssid, wifi_cur_info.ssid) == 0)
-			ssid_menu[mitem].ob_state = OS_CHECKED;
-		else
-			ssid_menu[mitem].ob_state = 0;
-		ssid_menu[mitem].ob_spec.index = 0xFF1100L;
-		ssid_menu[mitem].ob_x = 0;
-		ssid_menu[mitem].ob_y = gl_hchar * n;
-		ssid_menu[mitem].ob_width = tree[WIN_SCSI_ID].ob_width;
-		ssid_menu[mitem].ob_height = gl_hchar;
-
+		ssid_menu[mitem] = wifi_menu_networks[n].ssid;
 		mitem++;
 	}
-	ssid_menu[mitem - 1].ob_next = ROOT;
-	ssid_menu[mitem - 1].ob_flags |= OF_LASTOB;
 
 	obj_set_ptext(tree, WIN_SCSI_ID, wifi_menu_networks[0].ssid);
 
@@ -272,69 +241,49 @@ void destroy_window(void)
 
 void window_mousedown(_WORD mox, _WORD moy)
 {
-	(void)mox;
-	(void)moy;
-#if 0
-	Str255 password;
-	char ssid[64];
-	Rect r,
-	 irect;
-	int mitems,
-	 n,
-	 selitem,
-	 hit,
-	 itype;
-	long new_net;
+	OBJECT *tree = rs_tree(WIN_ID);
+	_WORD obj;
+	GRECT pos;
+	int n;
+	int selitem;
 	struct wifi_network_entry *net;
 	struct wifi_join_request wjr;
-	DialogPtr dg;
-	EventRecord e;
-	ControlHandle ihandle;
-
-	GetPort(&savePort);
-	SetPort(win);
-
-	r = ssid_menu_rect;
-	LocalToGlobal(&r);
-
-	/* XXX: why does PtInRect not work here? */
-	if (!(p.h >= r.left && p.h <= r.left + r.right && p.v >= r.top && p.v <= r.top + r.bottom))
-	{
-		SetPort(savePort);
-		return;
-	}
 
 	if (wifi_scsi_id == WIFI_SCSI_ID_NONE)
 		return;
 
-	InsertMenu(ssid_menu, -1);
+	obj = objc_find(tree, ROOT, MAX_DEPTH, mox, moy);
+	if (obj != WIN_SCSI_ID)
+		return;
 
-	mitems = CountMItems(ssid_menu);
-	selitem = 1;
-	for (n = 0; n < mitems; n++)
+	selitem = 0;
+	for (n = 0; n < nwifi_menu_networks; n++)
 	{
 		if (strcmp(wifi_menu_networks[n].ssid, wifi_cur_info.ssid) == 0)
 		{
-			selitem = n + 1;
+			selitem = n;
 			break;
 		}
 	}
 
-	new_net = PopUpMenuSelect(ssid_menu, r.top + 1, r.left + 1, selitem);
+	objc_offset(tree, WIN_SCSI_ID, &pos.g_x, &pos.g_y);
+	pos.g_w = tree[WIN_SCSI_ID].ob_width;
+	pos.g_h = tree[WIN_SCSI_ID].ob_height;
+	selitem = do_popup(&pos, ssid_menu, nwifi_menu_networks, 2, selitem);
+	if (selitem < 0)
+		return;
 
-	DeleteMenu((*ssid_menu)->menuID);
-	if (hiword(new_net) == 0 || loword(new_net) == selitem)
-		goto menu_done;
-
-	net = &wifi_menu_networks[loword(new_net) - 1];
+	net = &wifi_menu_networks[selitem];
 
 	memset(&wjr, 0, sizeof(wjr));
 	strlcpy(wjr.ssid, net->ssid, sizeof(wjr.ssid));
 
 	if (net->flags & WIFI_NETWORK_FLAG_AUTH)
 	{
-		strlcpy(ssid, net->ssid, sizeof(ssid));
-		obj_set_ptext(tree, PASSWORD_DIALOG_SSID, ssid);
+#if 0
+		char password[64];
+
+		obj_set_ptext(tree, PASSWORD_DIALOG_SSID, net->ssid);
 
 		dg = GetNewDialog(OwnedResourceID(PASSWORD_DIALOG_ID), 0L, (WindowPtr) - 1L);
 		center_in_screen(tree, &r);
@@ -372,9 +321,10 @@ void window_mousedown(_WORD mox, _WORD moy)
 #if 0
 		DEBUG_LOG(("pass is \"%s\"\n", password));
 #endif
-		strlcpy(wjr.key, (char *) password, sizeof(wjr.key));
+		strlcpy(wjr.key, password, sizeof(wjr.key));
 
 		DisposDialog(dg);
+#endif
 	}
 
 	scsi_wifi_join(wifi_scsi_id, &wjr);
@@ -382,10 +332,6 @@ void window_mousedown(_WORD mox, _WORD moy)
 	/* force an update of the list */
 	scsi_wifi_info(wifi_scsi_id, &wifi_cur_info);
 	update_wifi_ssid_list(false);
-
-  menu_done:
-	SetPort(savePort);
-#endif
 }
 
 #if 0

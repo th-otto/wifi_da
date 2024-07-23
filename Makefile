@@ -14,6 +14,8 @@ OBJS = \
 	main.o \
 	scsi.o \
 	dd.o \
+	adaptrsc.o \
+	popup.o \
 	$(empty)
 
 all: wifi_da.acc
