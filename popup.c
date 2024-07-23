@@ -465,7 +465,6 @@ _WORD do_form_popup(OBJECT *tree,
 	_WORD mbutton;
 	_WORD obj;
 	_WORD oldobj;						/* old object           */
-	bool done = false;					/* Done flag to return..    */
 	_WORD exit_state;					/* looking for up or down button */
 	GRECT work;
 	_WORD message[8];
@@ -490,7 +489,7 @@ _WORD do_form_popup(OBJECT *tree,
 	if (obj <= 0 || (tree[obj].ob_state & OS_DISABLED))
 		obj = -1;
 
-	do
+	for (;;)
 	{
 		if (obj != oldobj)
 		{
@@ -509,7 +508,7 @@ _WORD do_form_popup(OBJECT *tree,
 		oldobj = obj;
 
 		events = evnt_multi(MU_BUTTON | MU_M1,
-			0x01, 0x01, exit_state,
+			1, 1, exit_state,
 			mox, moy, 1, 1, 1,
 			0, 0, 0, 0, 0,
 			message,
@@ -531,10 +530,9 @@ _WORD do_form_popup(OBJECT *tree,
 			}
 		}
 
-		if (events == 0)
-			done = true;
-
-	} while (!done);
+		if (events != 0)
+			break;
+	}
 
 	/* Wait for up Button! */
 	while (mbutton)

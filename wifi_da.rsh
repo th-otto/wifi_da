@@ -319,9 +319,9 @@ extern void *hfix_objs(RSHDR *_hdr, OBJECT *_ob, _WORD _num_objs);
 #define NUM_CIB     0
 #define NUM_CIC     0
 #define NUM_TI		3
-#define NUM_FRSTR	8
+#define NUM_FRSTR	9
 #define NUM_FRIMG	7
-#define NUM_OBS     21
+#define NUM_OBS     20
 #define NUM_TREE	3
 #define NUM_UD		0
 #endif
@@ -336,24 +336,24 @@ static char wifi_da_string_5[] = "\275 2024, thorsten otto";
 static char wifi_da_string_6[] = "I miss you, Carl";
 static char wifi_da_string_7[] = "OK";
 static char wifi_da_string_8[] = "Web: https://jcs.org";
-static char wifi_da_string_9[] = "The Wi-Fi network";
-static char wifi_da_string_10[] = "requires a password";
-static char wifi_da_string_11[] = "Cancel";
-static char wifi_da_string_12[] = "Connect";
-static char wifi_da_string_13[] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-static char wifi_da_string_14[] = "";
-static char wifi_da_string_15[] = "";
-static char wifi_da_string_16[] = "Password:";
-static char wifi_da_string_17[] = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
-static char wifi_da_string_18[] = "________________________________________________________________";
-static char wifi_da_string_19[] = "X";
-static char wifi_da_string_20[] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
-static char wifi_da_string_21[] = "";
-static char wifi_da_string_22[] = "";
-static char wifi_da_string_23[] = "1.1 \275 2023-2024, joshua stein <jcs@jcs.org>";
-static char wifi_da_string_24[] = "[2][%s][ Yes | No ]";
-static char wifi_da_string_25[] = "[%c][%s][ OK ]";
-static char wifi_da_string_26[] = "Wi-Fi";
+static char wifi_da_string_9[] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+static char wifi_da_string_10[] = "";
+static char wifi_da_string_11[] = "";
+static char wifi_da_string_12[] = "The Wi-Fi network";
+static char wifi_da_string_13[] = "requires a password:";
+static char wifi_da_string_14[] = "Cancel";
+static char wifi_da_string_15[] = "Connect";
+static char wifi_da_string_16[] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+static char wifi_da_string_17[] = "";
+static char wifi_da_string_18[] = "";
+static char wifi_da_string_19[] = "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@";
+static char wifi_da_string_20[] = "_______________________________________________________________";
+static char wifi_da_string_21[] = "X";
+static char wifi_da_string_22[] = "1.1 \275 2023-2024, joshua stein <jcs@jcs.org>";
+static char wifi_da_string_23[] = "[2][%s][ Yes | No ]";
+static char wifi_da_string_24[] = "[%c][%s][ OK ]";
+static char wifi_da_string_25[] = "Wi-Fi";
+static char wifi_da_string_26[] = "Wi-Fi Password";
 static char wifi_da_string_27[] = "No SCSI Driver";
 static char wifi_da_string_28[] = "No Device Found";
 static char wifi_da_string_29[] = "(No Network)";
@@ -424,6 +424,7 @@ static _UBYTE wifi_da_IMAGE9[] = {
 
 
 static char *rs_frstr[NUM_FRSTR] = {
+	wifi_da_string_22,
 	wifi_da_string_23,
 	wifi_da_string_24,
 	wifi_da_string_25,
@@ -464,9 +465,9 @@ static ICONBLK rs_iconblk[] = {
 
 
 static TEDINFO rs_tedinfo[NUM_TI] = {
-	{ wifi_da_string_13, wifi_da_string_14, wifi_da_string_15, IBM, 0, TE_LEFT, 0x1100, 0x0, -1, 65,1 }, /* PASSWORD_DIALOG_SSID */
-	{ wifi_da_string_17, wifi_da_string_18, wifi_da_string_19, IBM, 0, TE_LEFT, 0x1100, 0x0, -1, 65,65 }, /* PASSWORD_DIALOG_PASSWORD */
-	{ wifi_da_string_20, wifi_da_string_21, wifi_da_string_22, IBM, 0, TE_CNTR, 0x1180, 0x0, -1, 29,1 } /* WIN_SCSI_ID */
+	{ wifi_da_string_9, wifi_da_string_10, wifi_da_string_11, IBM, 0, TE_CNTR, 0x1180, 0x0, -1, 29,1 }, /* WIN_SCSI_ID */
+	{ wifi_da_string_16, wifi_da_string_17, wifi_da_string_18, IBM, 0, TE_LEFT, 0x1100, 0x0, -1, 64,1 }, /* PASSWORD_DIALOG_SSID */
+	{ wifi_da_string_19, wifi_da_string_20, wifi_da_string_21, IBM, 0, TE_LEFT, 0x1180, 0x0, -1, 64,64 } /* PASSWORD_DIALOG_PASSWORD */
 };
 
 
@@ -484,29 +485,28 @@ static OBJECT rs_object[NUM_OBS] = {
 	{ 9, -1, -1, G_BUTTON, 0x607, OS_NORMAL, C_UNION(wifi_da_string_7), 38,11, 8,1 }, /* ABOUT_OK */
 	{ 0, -1, -1, G_STRING, OF_LASTOB, OS_NORMAL, C_UNION(wifi_da_string_8), 8,8, 27,1 },
 
-/* PASSWORD_DIALOG_ID */
-
-	{ -1, 1, 7, G_BOX, OF_FL3DBAK, OS_OUTLINED, C_UNION(0x21100L), 0,0, 68,10 },
-	{ 2, -1, -1, G_STRING, OF_NONE, OS_NORMAL, C_UNION(wifi_da_string_9), 2,1, 17,1 },
-	{ 3, -1, -1, G_STRING, OF_NONE, OS_NORMAL, C_UNION(wifi_da_string_10), 2,3, 19,1 },
-	{ 4, -1, -1, G_BUTTON, 0x605, OS_NORMAL, C_UNION(wifi_da_string_11), 46,8, 8,1 }, /* PASSWORD_DIALOG_CANCEL */
-	{ 5, -1, -1, G_BUTTON, 0x607, OS_NORMAL, C_UNION(wifi_da_string_12), 58,8, 8,1 }, /* PASSWORD_DIALOG_CONNECT */
-	{ 6, -1, -1, G_TEXT, OF_NONE, OS_NORMAL, C_UNION(&rs_tedinfo[0]), 2,2, 64,1 }, /* PASSWORD_DIALOG_SSID */
-	{ 7, -1, -1, G_STRING, OF_NONE, OS_NORMAL, C_UNION(wifi_da_string_16), 2,5, 9,1 },
-	{ 0, -1, -1, G_FTEXT, 0x28, OS_NORMAL, C_UNION(&rs_tedinfo[1]), 2,6, 64,1 }, /* PASSWORD_DIALOG_PASSWORD */
-
 /* WIN_ID */
 
 	{ -1, 1, 2, G_BOX, OF_NONE, OS_NORMAL, C_UNION(0x1100L), 0,0, 34,2 },
 	{ 2, -1, -1, G_IMAGE, OF_NONE, OS_NORMAL, C_UNION(&rs_bitblk[0]), 1,2048, 4096,4096 }, /* WIN_SIGNAL */
-	{ 0, -1, -1, G_BOXTEXT, OF_LASTOB, OS_NORMAL, C_UNION(&rs_tedinfo[2]), 4,2048, 29,1 } /* WIN_SCSI_ID */
+	{ 0, -1, -1, G_BOXTEXT, OF_LASTOB, OS_NORMAL, C_UNION(&rs_tedinfo[0]), 4,2048, 29,1 }, /* WIN_SCSI_ID */
+
+/* PASSWORD_DIALOG_ID */
+
+	{ -1, 1, 6, G_BOX, OF_FL3DBAK, OS_OUTLINED, C_UNION(0x21100L), 0,0, 67,9 },
+	{ 2, -1, -1, G_STRING, OF_NONE, OS_NORMAL, C_UNION(wifi_da_string_12), 2,1, 17,1 },
+	{ 3, -1, -1, G_STRING, OF_NONE, OS_NORMAL, C_UNION(wifi_da_string_13), 2,3, 20,1 },
+	{ 4, -1, -1, G_BUTTON, 0x605, OS_NORMAL, C_UNION(wifi_da_string_14), 45,7, 8,1 }, /* PASSWORD_DIALOG_CANCEL */
+	{ 5, -1, -1, G_BUTTON, 0x607, OS_NORMAL, C_UNION(wifi_da_string_15), 57,7, 8,1 }, /* PASSWORD_DIALOG_CONNECT */
+	{ 6, -1, -1, G_TEXT, OF_NONE, OS_NORMAL, C_UNION(&rs_tedinfo[1]), 2,2, 63,1 }, /* PASSWORD_DIALOG_SSID */
+	{ 0, -1, -1, G_FTEXT, 0x28, OS_NORMAL, C_UNION(&rs_tedinfo[2]), 2,5, 63,1 } /* PASSWORD_DIALOG_PASSWORD */
 };
 
 
 static OBJECT *rs_trindex[NUM_TREE] = {
 	&rs_object[0], /* ABOUT_DIALOG_ID */
-	&rs_object[10], /* PASSWORD_DIALOG_ID */
-	&rs_object[18] /* WIN_ID */
+	&rs_object[10], /* WIN_ID */
+	&rs_object[13] /* PASSWORD_DIALOG_ID */
 };
 
 
@@ -705,7 +705,7 @@ _WORD wifi_da_rsc_free()
 #else /* !RSC_STATIC_FILE */
 #if 0
 _WORD rs_numstrings = 31;
-_WORD rs_numfrstr = 8;
+_WORD rs_numfrstr = 9;
 
 _WORD rs_nuser = 0;
 _WORD rs_numimages = 10;
@@ -714,7 +714,7 @@ _WORD rs_numfrimg = 7;
 _WORD rs_numib = 1;
 _WORD rs_numcib = 0;
 _WORD rs_numti = 3;
-_WORD rs_numobs = 21;
+_WORD rs_numobs = 20;
 _WORD rs_numtree = 3;
 
 char rs_name[] = "wifi_da.rsc";

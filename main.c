@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "wi-fi.h"
+#include "adaptrsc.h"
 
 #include "wifi_da.rsh"
 
@@ -61,13 +62,15 @@ static void da_close(void)
 }
 
 
-static void handle_message(_WORD *message)
+void handle_message(_WORD *message)
 {
 	switch (message[0])
 	{
 	case WM_REDRAW:
 		if (main_win > 0 && main_win == message[3])
 			update_window((const GRECT *)&message[4]);
+		if (password_win > 0 && password_win == message[3])
+			redraw_window(password_win, rs_tree(PASSWORD_DIALOG_ID), (const GRECT *)&message[4]);
 		break;
 
 	case AC_CLOSE:
@@ -79,26 +82,42 @@ static void handle_message(_WORD *message)
 		break;
 	
 	case WM_CLOSED:
+		if (password_win == message[3])
+			destroy_pw_window();
+		if (main_win == message[3])
+			destroy_windows();
+		break;
+
 	case AP_TERM:
-		destroy_window();
+		destroy_windows();
 		break;
 
 	case WM_MOVED:
 	case WM_SIZED:
 		if (main_win > 0 && main_win == message[3])
 			wind_set_grect(main_win, WF_CURRXYWH, (const GRECT *)&message[4]);
+		if (password_win > 0 && password_win == message[3])
+			wind_set_grect(password_win, WF_CURRXYWH, (const GRECT *)&message[4]);
 		break;
 
 	case WM_TOPPED:
 	case WM_NEWTOP:
 		if (main_win > 0 && main_win == message[3])
-			wind_set_int(main_win, WF_TOP, 0);
+		{
+			if (password_win > 0)
+				wind_set_int(password_win, WF_TOP, 0);
+			else
+				wind_set_int(main_win, WF_TOP, 0);
+		}
+		if (password_win > 0 && password_win == message[3])
+			wind_set_int(password_win, WF_TOP, 0);
 		break;
 
 	case WM_BOTTOMED:
 	case WM_M_BDROPPED:
 		if (main_win > 0 && main_win == message[3])
 			wind_set_int(main_win, WF_BOTTOM, 0);
+		/* ignored on password window */
 		break;
 
 	/* just to avoid that the sender has to wait for timeout */	
@@ -113,7 +132,6 @@ static void handle_key(_WORD key, _WORD kstate)
 {
 	_WORD top;
 	
-	(void)key;
 	(void)kstate;
 	wind_get_int(0, WF_TOP, &top);
 	if (top == main_win)
@@ -129,11 +147,9 @@ static void handle_key(_WORD key, _WORD kstate)
 		{
 		case 0x1b:
 		case 0x11:
-			destroy_window();
+			destroy_main_window();
 			break;
 		}
-	} else if (top == password_win)
-	{
 	}
 }
 
@@ -230,6 +246,7 @@ int main(void)
 	for (i = 0; i < NUM_OBS; i++)
 		rsrc_obfix(rs_object, i);
 
+	aes_flags = get_aes_info();
 	util_init();
 	scsidrv_init(false);
 
@@ -268,7 +285,6 @@ int main(void)
 		if (events & MU_BUTTON)
 		{
 			window_mousedown(mox, moy);
-			update_window(NULL);
 		}
 		
 		if (events & MU_KEYBD)
@@ -283,7 +299,7 @@ int main(void)
 			handle_timer();
 	}
 	
-	destroy_window();
+	destroy_windows();
 	scsidrv_exit();
 	appl_exit();
 	

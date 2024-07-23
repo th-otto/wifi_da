@@ -25,6 +25,7 @@ void wifi_about(void)
 	GRECT bounds;
 	
 	tree = rs_tree(ABOUT_DIALOG_ID);
+	tree[ABOUT_OK].ob_state &= ~OS_SELECTED;
 
 	center_in_screen(tree, &bounds);
 	wind_update(BEG_UPDATE);

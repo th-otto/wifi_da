@@ -643,7 +643,7 @@ int scsi_find_wifi(void)
 }
 
 
-#if 0
+#if 0 /* not used here */
 static void SetCmd6(tCmd6 *cdb, int LogicalUnit, unsigned char Cmd, unsigned long BlockAdr, unsigned short TransferLen)
 {
 	cdb->Command = Cmd;

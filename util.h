@@ -23,9 +23,6 @@
 #include <limits.h>
 #include <time.h>
 
-#define nitems(what) (sizeof((what)) / sizeof((what)[0]))
-#define member_size(type, member) sizeof(((type *)0)->member)
-
 #define multi() (_AESnumapps != 1)
 
 void util_init(void);
@@ -54,13 +51,6 @@ char *obj_get_ptext(OBJECT *obj);
 
 void dd_nak(const _WORD *message);
 
-
-#if 0
-bool ModalDialogFilter(DialogPtr dlg, EventRecord *event, short *hit);
-void PasswordDialogFieldFilterSetup(short ditl_id, char *storage, size_t len);
-bool PasswordDialogFieldFilter(DialogPtr dlg, EventRecord *event, short *hit);
-void PasswordDialogFieldFinish(void);
-#endif
 
 size_t strlcpy(char *dst, const char *src, size_t dsize);
 

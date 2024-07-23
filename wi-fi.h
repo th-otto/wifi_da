@@ -45,9 +45,7 @@
 /* disable in production */
 #define DEBUG_LOGGING		0
 
-#if DEBUG_LOGGING
 #include <mint/arch/nf_ops.h>
-#endif
 
 enum state
 {
@@ -80,6 +78,7 @@ struct wifi_join_request
 
 extern short _app;
 extern _WORD main_win;
+extern _WORD password_win;
 extern _WORD aes_handle;
 extern _WORD gl_wchar, gl_hchar;
 
@@ -91,7 +90,8 @@ enum
 };
 extern clock_t wifi_scan_started;
 extern struct wifi_network_entry wifi_cur_info;
-extern struct wifi_network_entry wifi_scan_networks[10];
+#define MAX_NETWORKS 10
+extern struct wifi_network_entry wifi_scan_networks[MAX_NETWORKS];
 
 void wifi_about(void);
 
@@ -105,8 +105,12 @@ void create_window(void);
 void update_window(const GRECT *clip);
 void update_wifi_cur_info(void);
 void update_wifi_ssid_list(bool update_networks);
-void destroy_window(void);
+void destroy_windows(void);
+void destroy_main_window(void);
+void destroy_pw_window(void);
 void window_mousedown(_WORD mox, _WORD moy);
+void redraw_window(_WORD win, OBJECT *tree, const GRECT *clip);
+void handle_message(_WORD *message);
 
 bool getCookie(long cookie, unsigned long *p_value);
 bool scsidrv_init(bool reinit);

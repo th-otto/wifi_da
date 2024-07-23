@@ -11,13 +11,13 @@
  * Number of Color Iconblks: 0
  * Number of Color Icons:    0
  * Number of Tedinfos:       3
- * Number of Free Strings:   8
+ * Number of Free Strings:   9
  * Number of Free Images:    7
- * Number of Objects:        21
+ * Number of Objects:        20
  * Number of Trees:          3
  * Number of Userblks:       0
  * Number of Images:         10
- * Total file size:          1918
+ * Total file size:          1900
  */
 
 #ifdef RSC_NAME
@@ -40,7 +40,7 @@
 #endif
 #if !RSC_STATIC_FILE
 #define NUM_STRINGS 31
-#define NUM_FRSTR 8
+#define NUM_FRSTR 9
 #define NUM_UD 0
 #define NUM_IMAGES 10
 #define NUM_BB 8
@@ -48,7 +48,7 @@
 #define NUM_IB 1
 #define NUM_CIB 0
 #define NUM_TI 3
-#define NUM_OBS 21
+#define NUM_OBS 20
 #define NUM_TREE 3
 #endif
 
@@ -59,15 +59,15 @@
 #define VERSION                            3 /* STRING in tree ABOUT_DIALOG_ID */
 #define ABOUT_OK                           8 /* BUTTON in tree ABOUT_DIALOG_ID */
 
-#define PASSWORD_DIALOG_ID                 1 /* form/dialog */
+#define WIN_ID                             1 /* form/dialog */
+#define WIN_SIGNAL                         1 /* IMAGE in tree WIN_ID */
+#define WIN_SCSI_ID                        2 /* BOXTEXT in tree WIN_ID */
+
+#define PASSWORD_DIALOG_ID                 2 /* form/dialog */
 #define PASSWORD_DIALOG_CANCEL             3 /* BUTTON in tree PASSWORD_DIALOG_ID */
 #define PASSWORD_DIALOG_CONNECT            4 /* BUTTON in tree PASSWORD_DIALOG_ID */
 #define PASSWORD_DIALOG_SSID               5 /* TEXT in tree PASSWORD_DIALOG_ID */
-#define PASSWORD_DIALOG_PASSWORD           7 /* FTEXT in tree PASSWORD_DIALOG_ID */
-
-#define WIN_ID                             2 /* form/dialog */
-#define WIN_SIGNAL                         1 /* IMAGE in tree WIN_ID */
-#define WIN_SCSI_ID                        2 /* BOXTEXT in tree WIN_ID */
+#define PASSWORD_DIALOG_PASSWORD           6 /* FTEXT in tree PASSWORD_DIALOG_ID */
 
 #define VERSION_STR                        0 /* Free string */
 
@@ -77,13 +77,15 @@
 
 #define WIN_TITLE                          3 /* Free string */
 
-#define NO_SCSI_DRVR                       4 /* Free string */
+#define PASSWORD_TITLE                     4 /* Free string */
 
-#define NO_DEVICE_TEXT                     5 /* Free string */
+#define NO_SCSI_DRVR                       5 /* Free string */
 
-#define NO_NETWORK_TEXT                    6 /* Free string */
+#define NO_DEVICE_TEXT                     6 /* Free string */
 
-#define STR_FINDING                        7 /* Free string */
+#define NO_NETWORK_TEXT                    7 /* Free string */
+
+#define STR_FINDING                        8 /* Free string */
 
 #define SIGNAL_NO_DEVICE                   0 /* Free image */
 
