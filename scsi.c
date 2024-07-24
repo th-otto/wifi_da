@@ -23,6 +23,8 @@
 #include "scsidrv/scsi.h"
 #include "scsidrv/scsi3.h"
 
+/* https://github.com/BlueSCSI/BlueSCSI-v2/blob/main/lib/SCSI2SD/src/firmware/network.h#L26 */
+
 #define BLUESCSI_NETWORK_WIFI_CMD				0x1c
 #define BLUESCSI_NETWORK_WIFI_CMD_SCAN			0x01
 #define BLUESCSI_NETWORK_WIFI_CMD_COMPLETE		0x02
@@ -801,8 +803,10 @@ int scsi_wifi_scan_results(int id, struct wifi_network_entry *resp, int count)
 		size = (scsi_data[0] << 8) | scsi_data[1];
 		net_count = (int)(size / sizeof(struct wifi_network_entry));
 		if (net_count > count)
+		{
+			DEBUG_LOG(("capping %d nets to %d\n", net_count, count));
 			net_count = count;
-	
+		}
 		memcpy(resp, scsi_data + 2, sizeof(struct wifi_network_entry) * count);
 	}
 

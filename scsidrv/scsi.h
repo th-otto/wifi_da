@@ -176,10 +176,10 @@
 
 /* values for service action in */
 #define SAI_REPORT_SUPPORTED_OPCODES  0x0c
-#define SAI_READ_CAPACITY_16  0x10
-#define SAI_SEEK_CAPACITY_16  0x11
-#define SAI_GET_LBA_STATUS    0x12
-#define SAI_REPORT_REFERRALS  0x13
+#define SAI_READ_CAPACITY_16    0x10
+#define SAI_SEEK_CAPACITY_16    0x11
+#define SAI_GET_LBA_STATUS      0x12
+#define SAI_REPORT_REFERRALS    0x13
 #define SAI_GET_PHY_ELEM_STATUS 0x17
 
 /* values for VARIABLE_LENGTH_CMD service action codes
@@ -211,11 +211,11 @@
 #define XDREAD_32	      0x03
 #define XDWRITE_32	      0x04
 #define XPWRITE_32	      0x06
-#define XDWRITEREAD_32	      0x07
+#define XDWRITEREAD_32	  0x07
 #define READ_32		      0x09
 #define VERIFY_32	      0x0a
 #define WRITE_32	      0x0b
-#define WRITE_SAME_32	      0x0d
+#define WRITE_SAME_32	  0x0d
 
 
 /* Values for T10/04-262r7 */
@@ -425,7 +425,7 @@ typedef struct
 {
   unsigned char Command;
   unsigned char LunAdr;
-  unsigned short     Adr;
+  unsigned short Adr;
   unsigned char Len;
   unsigned char Flags;
 } tCmd6;
@@ -434,7 +434,7 @@ typedef struct
 {
   unsigned char Command;
   unsigned char Lun;
-  unsigned long     Adr;
+  unsigned long Adr;
   signed char Reserved;
   unsigned char LenHigh;
   unsigned char LenLow;
@@ -445,8 +445,8 @@ typedef struct
 {
   unsigned char Command;
   unsigned char Lun;
-  unsigned long     Adr;
-  unsigned long     Len;
+  unsigned long Adr;
+  unsigned long Len;
   signed char Reserved;
   unsigned char Flags;
 } tCmd12;

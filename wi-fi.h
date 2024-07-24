@@ -62,11 +62,13 @@ enum state
 };
 extern enum state da_state;
 
+/* https://github.com/BlueSCSI/BlueSCSI-v2/blob/main/lib/SCSI2SD/src/firmware/network.h#L36 */
+
 struct wifi_network_entry
 {
 	char ssid[64];
 	unsigned char bssid[6];
-	char rssi;
+	signed char rssi;
 	unsigned char channel;
 	unsigned char flags;
 #define WIFI_NETWORK_FLAG_AUTH 0x1
@@ -95,7 +97,13 @@ enum
 };
 extern clock_t wifi_scan_started;
 extern struct wifi_network_entry wifi_cur_info;
-#define MAX_NETWORKS 10
+
+/*
+ * currently, the firmware will not report more than this number
+ * of entries, so there is no point in increasing this
+ */
+#define WIFI_NETWORK_LIST_ENTRY_COUNT 10
+#define MAX_NETWORKS WIFI_NETWORK_LIST_ENTRY_COUNT
 extern struct wifi_network_entry wifi_scan_networks[MAX_NETWORKS];
 
 void wifi_about(void);
