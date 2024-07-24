@@ -588,7 +588,7 @@ int scsi_find_wifi(void)
 	
 		if (handle < 0)
 		{
-			DEBUG_LOG(("    ERROR: No handle\n"));
+			DEBUG_LOG(("    ERROR: No handle: %ld\n", handle));
 		} else
 		{
 			for (i = 0; i <= 1; i++)
@@ -624,7 +624,7 @@ int scsi_find_wifi(void)
 	
 				inquiryData.vendor[sizeof(inquiryData.vendor) - 1] = '\0';
 				inquiryData.product[sizeof(inquiryData.product) - 1] = '\0';
-				DEBUG_LOG(("scsi[%d]: v \"%s\", p \"%s\"", id, inquiryData.vendor, inquiryData.product));
+				DEBUG_LOG(("scsi[%d]: vendor \"%s\", product \"%s\"\n", id, inquiryData.vendor, inquiryData.product));
 	
 				if (memcmp(inquiryData.vendor, "Dayna", 5) != 0 || memcmp(inquiryData.product, "SCSI/Link", 9) != 0)
 					break;
@@ -635,7 +635,7 @@ int scsi_find_wifi(void)
 					return id;
 				}
 
-				DEBUG_LOG(("scsi[%d]: matched vendor/product but no info", id));
+				DEBUG_LOG(("scsi[%d]: matched vendor/product but no info\n", id));
 			}
 			scsidrv_close(cmd.Handle);
 		}
