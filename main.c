@@ -264,6 +264,9 @@ int main(void)
 		da_open();
 		if (main_win <= 0)
 			done = true;
+	} else
+	{
+		menu_register(gl_apid, "  Wi-Fi");
 	}
 
 	graf_mouse(ARROW, NULL);
