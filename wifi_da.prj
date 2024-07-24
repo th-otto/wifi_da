@@ -20,6 +20,8 @@ window.c
 dd.c
 adaptrsc.c
 popup.c
+debug.c
+malloc.c
 
 pcgemlib.lib
 pcstdlib.lib

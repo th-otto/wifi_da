@@ -20,8 +20,6 @@
 #define __WIFI_H__
 
 #include <stdlib.h>
-#include <stdbool.h>
-#include <stdint.h>
 #ifdef __PUREC__
 #include <tos.h>
 #include <aes.h>
@@ -30,6 +28,7 @@
 #include <mint/mintbind.h>
 #include <gem.h>
 #endif
+#include <mint/arch/nf_ops.h>
 
 #ifndef _WORD
 #  ifdef WORD
@@ -42,10 +41,16 @@
 #include "util.h"
 #include "wifi_da.h"
 
+typedef int bool;
+#define false 0
+#define true 1
+
+#ifndef UNUSED
+# define UNUSED(x) (void)(x)
+#endif
+
 /* disable in production */
 #define DEBUG_LOGGING		0
-
-#include <mint/arch/nf_ops.h>
 
 enum state
 {
@@ -55,7 +60,7 @@ enum state
 	STATE_SCANNING,
 	STATE_IDLE
 };
-extern int da_state;
+extern enum state da_state;
 
 struct wifi_network_entry
 {
@@ -95,8 +100,9 @@ extern struct wifi_network_entry wifi_scan_networks[MAX_NETWORKS];
 
 void wifi_about(void);
 
+void debug_printf(const char *format, ...) __attribute__((format(printf, 1, 2)));
 #if DEBUG_LOGGING
-#define DEBUG_LOG(args) nf_debugprintf args
+#define DEBUG_LOG(args) debug_printf args
 #else
 #define DEBUG_LOG(args)
 #endif

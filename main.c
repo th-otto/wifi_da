@@ -24,7 +24,7 @@
 
 #include "wifi_da.rsh"
 
-int da_state = STATE_CLOSED;
+enum state da_state = STATE_CLOSED;
 int wifi_scsi_id = WIFI_SCSI_ID_FINDING;
 clock_t wifi_scan_started;
 struct wifi_network_entry wifi_cur_info;
@@ -132,7 +132,7 @@ static void handle_key(_WORD key, _WORD kstate)
 {
 	_WORD top;
 	
-	(void)kstate;
+	UNUSED(kstate);
 	wind_get_int(0, WF_TOP, &top);
 	if (top == main_win)
 	{
@@ -175,7 +175,7 @@ static void handle_timer(void)
 			last_update = Ticks;
 			if (!scsi_wifi_scan_finished(wifi_scsi_id))
 			{
-				DEBUG_LOG(("%ld - handle_timer - scan not done\n", (long)Ticks));
+				DEBUG_LOG(("%ld - handle_timer - scan not done (%ld)\n", (long)Ticks, (long)Ticks - wifi_scan_started));
 				if (Ticks - wifi_scan_started <= ((clock_t)CLOCKS_PER_SEC * 5))
 					break;
 				DEBUG_LOG(("Wi-Fi scan failed to finish, canceling\n"));
@@ -207,6 +207,11 @@ static void handle_timer(void)
 				update_wifi_cur_info();
 			}
 		}
+		break;
+	
+	case STATE_CLOSED:
+	case STATE_INIT:
+	case STATE_FINDING:
 		break;
 	}
 }

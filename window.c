@@ -78,7 +78,7 @@ void create_window(void)
 	obj_set_ptext(tree, WIN_SCSI_ID, rs_str(STR_FINDING));
 	tree[WIN_SIGNAL].ob_spec.bitblk = rs_image(SIGNAL_NO_DEVICE);
 
-	if (wind_open_grect(main_win, &bounds) != 0)
+	if (wind_open_grect(main_win, &bounds) == 0)
 	{
 		DEBUG_LOG(("window open failed\n"));
 	}
@@ -333,7 +333,7 @@ static bool pw_dialog(struct wifi_join_request *wjr)
 	ed_field = PASSWORD_DIALOG_PASSWORD;
 	ed_win = password_win;
 	
-	if (wind_open_grect(password_win, &bounds) != 0)
+	if (wind_open_grect(password_win, &bounds) == 0)
 	{
 		DEBUG_LOG(("window open failed\n"));
 	}
@@ -434,7 +434,7 @@ static bool pw_dialog(struct wifi_join_request *wjr)
 }
 
 
-#define XXX 1
+#define XXX 0
 
 void window_mousedown(_WORD mox, _WORD moy)
 {

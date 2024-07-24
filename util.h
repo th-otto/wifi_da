@@ -39,7 +39,7 @@ void warn(const char *format, ...);
 __attribute__((format(printf, 1, 2)))
 void note(const char *format, ...);
 __attribute__((format(printf, 1, 2)))
-short ask(const char *format, ...);
+int ask(const char *format, ...);
 
 void center_in_screen(OBJECT *tree, GRECT *b);
 

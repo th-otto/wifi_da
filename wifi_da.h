@@ -71,9 +71,9 @@
 
 #define VERSION_STR                        0 /* Free string */
 
-#define AL_ASK                             1 /* Free string */
+#define AL_ASK                             1 /* Alert string */
 
-#define AL_WARN                            2 /* Free string */
+#define AL_WARN                            2 /* Alert string */
 
 #define WIN_TITLE                          3 /* Free string */
 

@@ -16,6 +16,8 @@ OBJS = \
 	dd.o \
 	adaptrsc.o \
 	popup.o \
+	debug.o \
+	malloc.o \
 	$(empty)
 
 all: wifi_da.acc

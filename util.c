@@ -26,14 +26,6 @@
 #include "wi-fi.h"
 #include "util.h"
 
-/*
- * Define to enable malloc debugging which creates an allocation larger
- * than the requested size, then embeds the allocated size and 2 canary
- * bytes before and after the allocation.  On xfree(), the canary bytes
- * are verified and if any are not correct, the program panics.
- */
-/* #define MALLOC_DEBUG 1 */
-
 #define ERROR_STRING_SIZE	1024
 
 enum
@@ -52,97 +44,6 @@ enum
 
 void util_init(void)
 {
-}
-
-/*
- * Memory functions
- */
-
-void *xmalloc(size_t size)
-{
-#ifdef MALLOC_DEBUG
-	void *ptr;
-	unsigned char *cptr;
-#endif
-
-	if (size == 0)
-		panic("xmalloc: zero size");
-
-#ifdef MALLOC_DEBUG
-	ptr = malloc(size + 8);
-
-	cptr = (unsigned char *) ptr;
-	cptr[0] = 0xff;
-	cptr[1] = 0xff;
-	cptr[2] = (size >> 24) & 0xff;
-	cptr[3] = (size >> 16) & 0xff;
-	cptr[4] = (size >> 8) & 0xff;
-	cptr[5] = size & 0xff;
-
-	cptr[6 + size] = 0xff;
-	cptr[6 + size + 1] = 0xff;
-
-	return cptr + 6;
-#else
-	return malloc(size);
-#endif
-}
-
-void xfree(void *ptrptr)
-{
-	void **addr = (void **) ptrptr;
-
-#ifdef MALLOC_DEBUG
-	size_t size;
-	unsigned char *cptr;
-#endif
-	void *ptr;
-
-	if (ptrptr == NULL)
-		panic("xfree(NULL)");
-
-	ptr = *addr;
-	if (ptr == NULL)
-		panic("xfree(&NULL) likely a double-free");
-
-#ifdef MALLOC_DEBUG
-	cptr = (unsigned char *) ptr - 6;
-	if (cptr[0] != 0xff || cptr[1] != 0xff)
-		panic("xfree() pre-buf canary dead");
-
-	size = ((unsigned long) (cptr[2]) << 24) |
-		((unsigned long) (cptr[3]) << 16) | ((unsigned long) (cptr[4]) << 8) | (unsigned long) (cptr[5]);
-
-	if (cptr[6 + size] != 0xff || cptr[6 + size + 1] != 0xff)
-		panic("xfree() post-buf canary dead");
-
-	free(cptr);
-#else
-	free(ptr);
-#endif
-
-	*addr = NULL;
-}
-
-
-void *xmalloczero(size_t size)
-{
-	void *ptr;
-
-	ptr = xmalloc(size);
-	if (ptr != NULL)
-		memset(ptr, 0, size);
-
-	return ptr;
-}
-
-
-void *xcalloc(size_t nmemb, size_t size)
-{
-	if (nmemb > 0 && SIZE_MAX / nmemb < size)
-		panic("xcalloc(%lu, %lu) overflow", nmemb, size);
-
-	return xmalloczero(nmemb * size);
 }
 
 
@@ -170,7 +71,8 @@ static void vwarn(short alert_func, const char *format, va_list ap)
 		icon = '3';
 		break;
 	}
-	sprintf(alert_str, rs_str(AL_WARN), icon, err_str);
+	sprintf(alert_str, rs_str(AL_WARN), err_str);
+	alert_str[1] = icon;
 	form_alert(1, alert_str);
 }
 
@@ -222,7 +124,7 @@ void note(const char *format, ...)
 }
 
 
-short ask(const char *format, ...)
+int ask(const char *format, ...)
 {
 	char err_str[ERROR_STRING_SIZE];
 	char alert_str[ERROR_STRING_SIZE];
