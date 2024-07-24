@@ -579,7 +579,7 @@ int scsi_find_wifi(void)
 	if (cookie_scsi == 0)
 		return WIFI_SCSI_ID_NONE;
 
-	for (id = 0; devCount; id++)
+	for (id = 0; id < devCount; id++)
 	{
 		scsiId.hi = 0;
 		scsiId.lo = deviceInfos[id].id;
@@ -591,19 +591,26 @@ int scsi_find_wifi(void)
 			DEBUG_LOG(("    ERROR: No handle: %ld\n", handle));
 		} else
 		{
+			unsigned short Len;
+
+			Len = 5;
+			/*
+			 * FIXME: that loop is maybe unneeded, and we could request
+			 * the complete info in the first run
+			 */
 			for (i = 0; i <= 1; i++)
 			{
 				cdb.Command = INQUIRY; 				/* inquiry */
 				cdb.LunAdr = 0;
 				cdb.Adr = 0;
-				cdb.Len = 5;						/* length */
+				cdb.Len = Len;						/* length */
 				cdb.Flags = 0;
 	
 				cmd.Handle = (tHandle)handle;
 				cmd.Cmd = (char *)&cdb;
 				cmd.CmdLen = sizeof(cdb);
 				cmd.Buffer = &inquiryData;
-				cmd.TransferLen = 5;
+				cmd.TransferLen = Len;
 				cmd.SenseBuffer = (void *) &senseData;
 				cmd.Timeout = 5 * 200;
 				cmd.Flags = 0;
@@ -617,8 +624,9 @@ int scsi_find_wifi(void)
 				if (i == 0)
 				{
 					/* re-inquire with full length */
-					cdb.Len += inquiryData.additionalLength;
-					cmd.TransferLen += inquiryData.additionalLength;
+					Len += inquiryData.additionalLength;
+					if (Len > 254)
+						Len = 254;
 					continue;
 				}
 	
