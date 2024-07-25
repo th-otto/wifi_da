@@ -17,7 +17,6 @@
  */
 
 #include <stdarg.h>
-#include <stdio.h>
 #include <string.h>
 #include "wi-fi.h"
 
@@ -29,9 +28,11 @@ void debug_printf(const char *format, ...)
 {
 	va_list args;
 	
+#ifndef OLD_PUREC
 	va_start(args, format);
 	nf_debugvprintf(format, args);
 	va_end(args);
+#endif
 	if (debug_file == NULL)
 	{
 		debug_file = fopen("wifi_da.log", "w");

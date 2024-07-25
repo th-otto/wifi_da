@@ -22,12 +22,12 @@
  */
 
 #include <string.h>
-#include <stdio.h>
-#include <mint/cookie.h>
 
 #include "wi-fi.h"
 
 #include "adaptrsc.h"
+
+#define C_MagX 0x4D616758L     /* MagX */
 
 
 unsigned long aes_flags;
@@ -72,7 +72,7 @@ unsigned long get_aes_info(void)
 		if (appl_getinfo(7, &ag1, &ag2, &ag3, &ag4))		/* Unterfunktion 7 */
 			flags |= ag1 & (GAI_WDLG|GAI_LBOX|GAI_FNTS|GAI_FSEL);
 
-		if (appl_getinfo(AES_MOUSE, &ag1, &ag2, &ag3, &ag4) && (ag1 & 1))		/* graf_mouse(M_SAVE/M_RESTORE) supported? */
+		if (appl_getinfo(8, &ag1, &ag2, &ag3, &ag4) && (ag1 & 1))		/* graf_mouse(M_SAVE/M_RESTORE) supported? */
 			flags |= GAI_MOUSE;
 
 		if (appl_getinfo(9, &ag1, &ag2, &ag3, &ag4))		/* form_popup() supported? */

@@ -19,35 +19,16 @@
 #ifndef __WIFI_H__
 #define __WIFI_H__
 
+#include <stdio.h>
 #include <stdlib.h>
-#ifdef __PUREC__
-#include <tos.h>
-#include <aes.h>
-#include <vdi.h>
-#else
-#include <mint/mintbind.h>
-#include <gem.h>
-#endif
-#include <mint/arch/nf_ops.h>
-
-#ifndef _WORD
-#  ifdef WORD
-#    define _WORD WORD
-#  else
-#    define _WORD short
-#  endif
-#endif
-
+#include <time.h>
+#include "sysdefs.h"
 #include "util.h"
 #include "wifi_da.h"
 
 typedef int bool;
 #define false 0
 #define true 1
-
-#ifndef UNUSED
-# define UNUSED(x) (void)(x)
-#endif
 
 /* disable in production */
 #ifndef DEBUG_LOGGING
@@ -85,7 +66,9 @@ struct wifi_join_request
 	unsigned char _padding;
 };
 
+#ifdef __GEMLIB__
 extern short _app;
+#endif
 extern _WORD main_win;
 extern _WORD password_win;
 extern _WORD aes_handle;

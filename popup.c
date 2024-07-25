@@ -22,7 +22,6 @@
  */
 
 #include <string.h>
-#include <stdio.h>
 
 #include "wi-fi.h"
 
@@ -349,7 +348,7 @@ _WORD do_popup(GRECT *button_rect, char **strs, _WORD no_strs, _WORD spaces, _WO
 		{
 			slct = do_form_popup(tree, 0, 0, -1, -1, 0, 0, &scroll_pos);
 		}
-		evnt_timer(0);
+		evnt_timer(EVNT_TIME(0));
 
 		if (slct > 0)
 		{
@@ -475,7 +474,7 @@ _WORD do_form_popup(OBJECT *tree,
 	pop_position(tree, &work);
 	objc_draw_grect(tree, ROOT, MAX_DEPTH, &work);
 
-	evnt_timer(25);
+	evnt_timer(EVNT_TIME(25));
 
 	wind_update(BEG_UPDATE);
 	wind_update(BEG_MCTRL);
@@ -512,7 +511,7 @@ _WORD do_form_popup(OBJECT *tree,
 			mox, moy, 1, 1, 1,
 			0, 0, 0, 0, 0,
 			message,
-			0,
+			EVNT_TIME(0),
 			&mox, &moy, &mbutton, &dummy, &dummy, &dummy);
 		events &= MU_BUTTON;
 
@@ -526,7 +525,7 @@ _WORD do_form_popup(OBJECT *tree,
 			{
 				exit_state = 1;
 				events = 0;
-				evnt_timer(125);
+				evnt_timer(EVNT_TIME(125));
 			}
 		}
 
@@ -552,3 +551,97 @@ _WORD do_form_popup(OBJECT *tree,
 
 	return obj;
 }
+
+
+#if defined(__PUREC__) && !defined(__PORTAES_H__)
+_WORD form_popup(OBJECT *tree, _WORD x, _WORD y)
+{
+	AESPB pb;
+	
+	pb.contrl = _GemParBlk.contrl;
+	pb.global = _GemParBlk.global;
+	pb.intin = _GemParBlk.intin;
+	pb.intout = _GemParBlk.intout;
+	pb.addrin = (void *)_GemParBlk.addrin;
+	pb.addrout = (void *)_GemParBlk.addrout;
+	pb.contrl[0] = 135; /* opcode */
+	pb.contrl[1] = 2; /* nintin */
+	pb.contrl[2] = 1; /* nintout */
+	pb.contrl[3] = 1; /* naddrin */
+	pb.contrl[4] = 0; /* naddrout */
+	_GemParBlk.intin[0] = x;
+	_GemParBlk.intin[1] = y;
+	_GemParBlk.addrin[0] = tree;
+	_crystal(&pb);
+	return _GemParBlk.intout[0];
+}
+
+
+_WORD xfrm_popup(
+                OBJECT *tree, _WORD x, _WORD y,
+                _WORD firstscrlob, _WORD lastscrlob,
+                _WORD nlines,
+                void __CDECL (*init)(struct POPUP_INIT_args),
+                void *param, _WORD *lastscrlpos)
+{
+	AESPB pb;
+	
+	pb.contrl = _GemParBlk.contrl;
+	pb.global = _GemParBlk.global;
+	pb.intin = _GemParBlk.intin;
+	pb.intout = _GemParBlk.intout;
+	pb.addrin = (void *)_GemParBlk.addrin;
+	pb.addrout = (void *)_GemParBlk.addrout;
+	pb.contrl[0] = 135; /* opcode */
+	pb.contrl[1] = 6; /* nintin */
+	pb.contrl[2] = 2; /* nintout */
+	pb.contrl[3] = 3; /* naddrin */
+	pb.contrl[4] = 0; /* naddrout */
+	_GemParBlk.intin[0] = x;
+	_GemParBlk.intin[1] = y;
+	_GemParBlk.intin[2] = firstscrlob;
+	_GemParBlk.intin[3] = lastscrlob;
+	_GemParBlk.intin[4] = nlines;
+	_GemParBlk.intin[5] = *lastscrlpos;
+	_GemParBlk.addrin[0] = tree;
+	_GemParBlk.addrin[1] = init;
+	_GemParBlk.addrin[2] = param;
+	_crystal(&pb);
+	*lastscrlpos = _GemParBlk.intout[1];
+	return _GemParBlk.intout[0];
+}
+
+
+#undef min
+#undef max
+#define min(a, b) ((a) < (b) ? (a) : (b))
+#define max(a, b) ((a) > (b) ? (a) : (b))
+
+_WORD rc_intersect(const GRECT *r1, GRECT *r2)
+{
+	_WORD tx, ty, tw, th;
+	_WORD ret;
+
+	tx = max(r2->g_x, r1->g_x);
+	tw = min(r2->g_x + r2->g_w, r1->g_x + r1->g_w) - tx;
+	
+	ret = tw > 0;
+	if (ret)
+	{
+		ty = max(r2->g_y, r1->g_y);
+		th = min(r2->g_y + r2->g_h, r1->g_y + r1->g_h) - ty;
+		
+		ret = th > 0;
+		if (ret)
+		{
+			r2->g_x = tx;
+			r2->g_y = ty;
+			r2->g_w = tw;
+			r2->g_h = th;
+		}
+	}
+	
+	return ret;
+}
+
+#endif

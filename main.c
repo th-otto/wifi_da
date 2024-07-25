@@ -17,7 +17,6 @@
  */
 
 #include <stdarg.h>
-#include <stdio.h>
 #include <string.h>
 #include "wi-fi.h"
 #include "adaptrsc.h"
@@ -282,7 +281,7 @@ int main(void)
 			0, 0, 0, 0, 0,
 			0, 0, 0, 0, 0,
 			message,
-			1000,
+			EVNT_TIME(1000),
 			&mox, &moy, &dummy, &kstate, &key, &dummy);
 		
 		if (events & MU_MESAG)

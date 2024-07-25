@@ -16,7 +16,6 @@
  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-#include <stdio.h>
 #include <string.h>
 #include "wi-fi.h"
 #include "popup.h"
@@ -347,7 +346,7 @@ static bool pw_dialog(struct wifi_join_request *wjr)
 			0, 0, 0, 0, 0,
 			0, 0, 0, 0, 0,
 			message,
-			0,
+			EVNT_TIME(0),
 			&mox, &moy, &dummy, &kstate, &key, &dummy);
 
 		if (events & MU_MESAG)

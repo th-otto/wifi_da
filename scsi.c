@@ -17,11 +17,12 @@
  */
 
 #include <string.h>
-#include <stdio.h>
-#include <mint/cookie.h>
 #include "wi-fi.h"
 #include "scsidrv/scsi.h"
 #include "scsidrv/scsi3.h"
+
+#define C_SCSI 0x53435349L     /* SCSI Driver */
+#define C_PMMU 0x504D4D55L     /* PMMU reprogrammed */
 
 /* https://github.com/BlueSCSI/BlueSCSI-v2/blob/main/lib/SCSI2SD/src/firmware/network.h#L26 */
 

@@ -21,7 +21,6 @@
 
 #include <stdlib.h>
 #include <limits.h>
-#include <time.h>
 
 #define multi() (_AESnumapps != 1)
 
