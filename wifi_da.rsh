@@ -313,13 +313,13 @@ extern void *hfix_objs(RSHDR *_hdr, OBJECT *_ob, _WORD _num_objs);
 #undef NUM_OBS
 #undef NUM_TREE
 #undef NUM_UD
-#define NUM_STRINGS 31
+#define NUM_STRINGS 32
 #define NUM_BB		8
 #define NUM_IB		1
 #define NUM_CIB     0
 #define NUM_CIC     0
 #define NUM_TI		3
-#define NUM_FRSTR	9
+#define NUM_FRSTR	10
 #define NUM_FRIMG	7
 #define NUM_OBS     20
 #define NUM_TREE	3
@@ -358,6 +358,7 @@ static char wifi_da_string_27[] = "No SCSI Driver";
 static char wifi_da_string_28[] = "No Device Found";
 static char wifi_da_string_29[] = "(No Network)";
 static char wifi_da_string_30[] = "Finding Wi-Fi...";
+static char wifi_da_string_31[] = "(Not logged in)";
 
 
 /* mask of ICON */
@@ -432,7 +433,8 @@ static char *rs_frstr[NUM_FRSTR] = {
 	wifi_da_string_27,
 	wifi_da_string_28,
 	wifi_da_string_29,
-	wifi_da_string_30
+	wifi_da_string_30,
+	wifi_da_string_31
 };
 
 
@@ -704,8 +706,8 @@ _WORD wifi_da_rsc_free()
 
 #else /* !RSC_STATIC_FILE */
 #if 0
-_WORD rs_numstrings = 31;
-_WORD rs_numfrstr = 9;
+_WORD rs_numstrings = 32;
+_WORD rs_numfrstr = 10;
 
 _WORD rs_nuser = 0;
 _WORD rs_numimages = 10;

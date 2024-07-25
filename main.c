@@ -258,14 +258,15 @@ int main(void)
 		shel_write(9, 1, 0, "", "");
 
 	done = false;
+	if (!_app || multi())
+	{
+		menu_register(gl_apid, "  Wi-Fi");
+	}
 	if (_app)
 	{
 		da_open();
 		if (main_win <= 0)
 			done = true;
-	} else
-	{
-		menu_register(gl_apid, "  Wi-Fi");
 	}
 
 	graf_mouse(ARROW, NULL);

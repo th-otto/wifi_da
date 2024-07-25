@@ -84,20 +84,23 @@ void create_window(void)
 	
 	if (wifi_scsi_id == WIFI_SCSI_ID_FINDING)
 	{
+		/* Have to redraw now, or the message set above will not be seen */
+		update_window(NULL);
 		wifi_scsi_id = scsi_find_wifi();
 	}
 
+	DEBUG_LOG(("scsi driver: %04x\n", scsidrv_get_version()));
 	if (wifi_scsi_id == WIFI_SCSI_ID_NONE)
 	{
 		da_state = STATE_IDLE;
-		DEBUG_LOG(("no device found\n"));
+		DEBUG_LOG((scsidrv_get_version() == 0 ? "no SCSI driver found" : "no device found\n"));
 		obj_set_ptext(tree, WIN_SCSI_ID, rs_str(scsidrv_get_version() == 0 ? NO_SCSI_DRVR : NO_DEVICE_TEXT));
-		update_window(NULL);
 	} else
 	{
 		DEBUG_LOG(("wifi id: %d\n", wifi_scsi_id));
 		scsi_wifi_info(wifi_scsi_id, &wifi_cur_info);
 		da_state = STATE_SCANNING;
+		obj_set_ptext(tree, WIN_SCSI_ID, wifi_cur_info.ssid[0] == '\0' ? rs_str(NOT_LOGGED_IN) : wifi_cur_info.ssid);
 		scsi_wifi_scan(wifi_scsi_id);
 	}
 }
@@ -243,7 +246,7 @@ void update_wifi_ssid_list(bool update_networks)
 		mitem++;
 	}
 
-	obj_set_ptext(tree, WIN_SCSI_ID, wifi_menu_networks[0].ssid);
+	obj_set_ptext(tree, WIN_SCSI_ID, wifi_cur_info.ssid[0] == '\0' ? rs_str(NOT_LOGGED_IN) : wifi_cur_info.ssid);
 
 	update_window(NULL);
 }

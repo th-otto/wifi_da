@@ -544,6 +544,7 @@ static bool scsi_wifi_info_internal(tHandle handle)
 	tCmd6 cdb;
 	tSCSICmd cmd;
 	unsigned short size;
+	bool ret;
 
 	cdb.Command = BLUESCSI_NETWORK_WIFI_CMD;
 	cdb.LunAdr = BLUESCSI_NETWORK_WIFI_CMD_INFO;
@@ -561,7 +562,12 @@ static bool scsi_wifi_info_internal(tHandle handle)
 	cmd.Timeout = 5 * 200;
 	cmd.Flags = 0;
 
-	return scsidrv_in(&cmd) >= 0;
+	ret = scsidrv_in(&cmd) >= 0;
+	if (ret)
+	{
+		DEBUG_LOG(("wifi info: size=%d, ssid=%s\n", (scsi_data[0] << 8) | scsi_data[1], ((struct wifi_network_entry *)&scsi_data[2])->ssid));
+	}
+	return ret;
 }
 
 
