@@ -32,7 +32,7 @@ typedef int bool;
 
 /* disable in production */
 #ifndef DEBUG_LOGGING
-#define DEBUG_LOGGING		1
+#define DEBUG_LOGGING		0
 #endif
 
 enum state

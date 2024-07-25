@@ -22,5 +22,7 @@ jobs:
         run: ./.scripts/build.sh
       - uses: actions/upload-artifact@v4
         with:
-          name: Atari ST binaries
-          path: wifi_da-atari.zip
+          name: wifi_da-atari
+          path: |
+             wifi_da.acc
+             wifi_dbg.prg
