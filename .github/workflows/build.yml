@@ -1,0 +1,26 @@
+name: Linux build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup environment
+        run: ./.scripts/setup_env.sh
+      - name: Install packages
+        run: |
+          ./.scripts/install_prerequisities.sh
+      - name: build
+        run: ./.scripts/build.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Atari ST binaries
+          path: wifi_da-atari.zip
